@@ -1,6 +1,8 @@
 from flask import Flask,render_template
+from source.example import bp
 
 app = Flask(__name__)
+app.register_blueprint(bp)
 
 @app.route('/')
 def home():
