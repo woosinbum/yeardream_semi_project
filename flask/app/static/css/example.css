@@ -1,0 +1,5 @@
+<h3 style="color: pink" id="color" class="color"> color </h3>
+
+#color { color: blue; }
+.color { color: red; }
+h3 { color: green; }
