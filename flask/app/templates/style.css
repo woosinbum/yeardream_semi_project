@@ -4,7 +4,6 @@
     border-collapse: collapse;
     margin: 0px;
     padding: 0px;
-    color: #000;
 }
 h1 {
     font-size: 48px;
@@ -108,7 +107,7 @@ h1 {
     border-right: 1px solid #e1e1e1;
 }
 
-/* top_five */
+/* second page */
 
 .top_five {
     width: 100%;
@@ -136,16 +135,19 @@ h1 {
     display: inline-block;
 }
 .exp {
-    text-align: center; 
+    margin-top: 25px;
+    margin-left: 45px;
+    text-align: center;
 }
 .report_rank {
-    background: orange;
+
     width:1000px;
     height:400px;
     position:relative;
     margin:50px auto;
     display:flex;
     justify-content: center;
+
 }
 
 .rank_box {
@@ -184,7 +186,7 @@ h1 {
     flex:1 0 144px;
 }
 
-.ranking > dl::after {
+.ranking > dl{
     position:relative;
     width:100%;
     height:46px;
@@ -196,20 +198,78 @@ h1 {
 
 }
 
-.first {
+.ranking >dl.first{
     width:clac(100% - 6px);
     height:60px;
     font-size: 20px;
     line-height: 24px;
     color: #006dff;
     border-style: solid;
-    
+    border-image: linear-gradient(to bottom, #38b3ff, #1a7cff);
     border-image-slice: 1;
+    border-image-width: 4px;
 }
-.ranking > dl > dt {
-    display: flex;
+
+/* third page */
+
+.total_amount{
+    width: 100%;
+    height: 718px;
+    background: #f1f2f3;
+    
 }
-.ranking > dl > dt {
-    display: flex;
-    margin-inline-start: 40px;
+
+.total_amount > h1 {
+    padding-top: 116px;
+    text-align: center;
+    font-size: 32px;
+
 }
+.total_amount > h1 > b{
+    height:38px;
+    margin-right: 10px;
+    padding: 0 15px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+    line-height:38px;
+    background-color: #1a7cff;
+    border-radius: 19px;
+    display: inline-block;
+}
+
+/* fourth page */
+
+.trend_report {
+    width: 100%;
+    height: 718px;
+    background: #f1f2f3;
+}
+
+.trend_report > h1{
+    padding-top: 116px;
+    text-align: center;
+    font-size: 32px;
+}
+.trend_report > h1 > b{
+    height:38px;
+    margin-right: 10px;
+    padding: 0 15px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+    line-height:38px;
+    background-color: #1a7cff;
+    border-radius: 19px;
+    display: inline-block;
+}
+
+.graph_box {
+    width: 600px;
+    height:360px;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-bottom: 21px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow:0 6px 16px 0 rgba(0,0,0,0.15);
