@@ -8,6 +8,8 @@ import time
 options = webdriver.FirefoxOptions()
 options.headless = True
 
+profile = webdriver.FirefoxProfile()
+profile.set_preference("dom.disable_open_during_load", True)
 # display = Display(visible=0, size=(800,600))
 # display.start()
 
@@ -26,7 +28,7 @@ collection2.delete_many({})
 naver_land = "https://new.land.naver.com/offices?"
 
 # 상권 좌표로 검색한 페이지에서 크롤링
-with webdriver.Firefox(executable_path=path, options=options) as driver:
+with webdriver.Firefox(executable_path=path, options=options, firefox_profile=profile) as driver:
     driver.implicitly_wait(10)
     items = collection.find()
     for item in items:
@@ -111,6 +113,7 @@ with webdriver.Firefox(executable_path=path, options=options) as driver:
                     except NoSuchElementException or \
                             StaleElementReferenceException:
                         print('Can\'t load element')
+                        raise
                 print(info.get('매물번호'))
             print("링크 수:", len(link_list))
             print("생성된 데이터:", len(data))
