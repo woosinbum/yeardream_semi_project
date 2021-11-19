@@ -1,12 +1,15 @@
-from pyvirtualdisplay import Display
+# from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, \
                                         StaleElementReferenceException
 import pymongo
 import time
 
-display = Display(visible=0, size=(800,600))
-display.start()
+options = webdriver.FirefoxOptions()
+options.headless = True
+
+# display = Display(visible=0, size=(800,600))
+# display.start()
 
 path = '/home/ubuntu/elice-team5-projects/geckodriver'
 
@@ -23,12 +26,12 @@ collection2.delete_many({})
 naver_land = "https://new.land.naver.com/offices?"
 
 # 상권 좌표로 검색한 페이지에서 크롤링
-with webdriver.Firefox(executable_path = path) as driver:
+with webdriver.Firefox(executable_path=path, options=options) as driver:
     driver.implicitly_wait(10)
     items = collection.find()
     for item in items:
         try:
-            print("***************************************************************")
+            print("**********************************************************")
             print(item['상권_코드'], item['상권_코드_명'], item['위도'], item['경도'])
             latitude, longitude = item['위도'], item['경도']
             driver.get(f"{naver_land}ms={latitude},{longitude}&a=SG&e=RETAIL")
@@ -44,7 +47,7 @@ with webdriver.Firefox(executable_path = path) as driver:
                 'return arguments[0].scrollHeight',
                 building_list
                 )
-            for j in range(10):
+            for i in range(5):
                 driver.execute_script(
                     'arguments[0].scrollTop = arguments[0].scrollHeight',
                     building_list
@@ -61,7 +64,7 @@ with webdriver.Firefox(executable_path = path) as driver:
                     if new_height == last_height:
                         break
                 last_height = new_height
-            print("화면 높이 :",last_height)
+            print("화면 높이 :", last_height)
             # 다 내린 후에는 하나씩 클릭해서 정보 읽어오기
             link_list = driver.find_elements_by_xpath(
                 '//*[@id="listContents1"]//a[@class="item_link"]'
@@ -108,7 +111,7 @@ with webdriver.Firefox(executable_path = path) as driver:
                     except NoSuchElementException or \
                             StaleElementReferenceException:
                         print('Can\'t load element')
-                print(info)
+                print(info.get('매물번호'))
             print("링크 수:", len(link_list))
             print("생성된 데이터:", len(data))
         except NoSuchElementException or \
@@ -118,4 +121,4 @@ with webdriver.Firefox(executable_path = path) as driver:
         if data:
             collection2.insert_many(data)
 
-display.stop()
+# display.stop()
