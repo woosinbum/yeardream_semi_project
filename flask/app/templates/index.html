@@ -6,7 +6,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/style.css">
 	</head>
 	<body>
 		<div class="wrap">
@@ -41,26 +41,32 @@
 			<ul class="amount">
 				<li>
 					<div>
-						<div>가장 많은 업종</div>
-						<div>{{ type }}</div>
+						<div>가장 매출이 높은 상권</div>
+						<div>{{ data.get('highest_place') }}</div>
+					</div>
+				</li>
+				<li>
+					<div>
+						<div>가장 매출이 높은업종</div>
+						<div>{{ data.get('highest_type') }}</div>
+					</div>
+				</li>
+				<li>
+					<div>
+						<div>가장 매출 상승률이 높은 상권</div>
+						<div>{{ data.get('highest_ratio_place') }}</div>
+					</div>
+				</li>
+				<li>
+					<div>
+						<div>가장 매출 상승률이 높은 업종</div>
+						<div>{{ data.get('highest_ratio_type') }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
 						<div>평균 매출</div>
-						<div>{{ sales }}</div>
-					</div>
-				</li>
-				<li>
-					<div>
-						<div>인기가 많은 상권</div>
-						<div>{{ popular_place }}</div>
-					</div>
-				</li>
-				<li>
-					<div>
-						<div>임대료가 싼 상권</div>
-						<div>{{ cheap_place }}</div>
+						<div>{{ data.get('sales') }}</div>
 					</div>
 				</li>
 			</ul>
@@ -85,34 +91,32 @@
 							</header>
 							<dl class="first">
 								<dt class="c_1">1</dt>
-								<dd class="c_2">{{rank1_type}}</dd>
-								<dd class="c_3">{{rank1_ratio_up}}</dd>	
+								<dd class="c_2">{{data['high_rank'][0]['type']}}</dd>
+								<dd class="c_3">{{data['high_rank'][0]['ratio']}}</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">2</dt>
-								<dd class="c_2">{{rank2_type}}</dd>
-								<dd class="c_3">{{rank1_ratio_up}}</dd>
+								<dd class="c_2">{{data['high_rank'][1]['type']}}</dd>
+								<dd class="c_3">{{data['high_rank'][1]['ratio']}}</dd>	
 								
 							</dl>
 							<dl>
 								<dt class="c_1">3</dt>
-								<dd class="c_2">{{rank1_type}}</dd>
-								<dd class="c_3">{{rank1_ratio_up}}</dd>
+								<dd class="c_2">{{data['high_rank'][2]['type']}}</dd>
+								<dd class="c_3">{{data['high_rank'][2]['ratio']}}</dd>	
 							
 							</dl>
 							<dl>
 								<dd class="c_1">4</dd>
-								<dd class="c_2">{{rank1_type}}</dd>
-								<dd class="c_3">{{rank1_ratio_up}}</dd>
+								<dd class="c_2">{{data['high_rank'][3]['type']}}</dd>
+								<dd class="c_3">{{data['high_rank'][3]['ratio']}}</dd>	
 								
 							</dl>
 							<dl>
 								<dt class="c_1">5</dt>
-								<dd class="c_2">{{rank1_type}}</dd>
-								<dd class="c_3">{{rank1_ratio_up}}</dd>
-								
+								<dd class="c_2">{{data['high_rank'][4]['type']}}</dd>
+								<dd class="c_3">{{data['high_rank'][4]['ratio']}}</dd>	
 							</dl>
-
 						</section>
 
 					</div>
@@ -126,34 +130,31 @@
 							</header>
 							<dl class="first">
 								<dt class="c_1">1</dt>
-								<dd class="c_2">{{rank1_type2}}</dd>
-								<dd class="c_3">{{rank1_ratio_up}}</dd>	
+								<dd class="c_2">{{data['low_rank'][0]['type']}}</dd>
+								<dd class="c_3">{{data['low_rank'][0]['ratio']}}</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">2</dt>
-								<dd class="c_2">{{rank2_type2}}</dd>
-								<dd class="c_3">{{rank2_ratio_down}}</dd>
+								<dd class="c_2">{{data['low_rank'][1]['type']}}</dd>
+								<dd class="c_3">{{data['low_rank'][1]['ratio']}}</dd>	
 								
 							</dl>
 							<dl>
 								<dt class="c_1">3</dt>
-								<dd class="c_2">{{rank3_type2}}</dd>
-								<dd class="c_3">{{rank3_ratio_down}}</dd>
+								<dd class="c_2">{{data['low_rank'][2]['type']}}</dd>
+								<dd class="c_3">{{data['low_rank'][2]['ratio']}}</dd>	
 							
 							</dl>
 							<dl>
 								<dd class="c_1">4</dd>
-								<dd class="c_2">{{rank4_type4}}</dd>
-								<dd class="c_3">{{rank4_ratio_down}}</dd>
-								
+								<dd class="c_2">{{data['low_rank'][3]['type']}}</dd>
+								<dd class="c_3">{{data['low_rank'][3]['ratio']}}</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">5</dt>
-								<dd class="c_2">{{rank5_type2}}</dd>
-								<dd class="c_3">{{rank5_ratio_down}}</dd>
-								
+								<dd class="c_2">{{data['low_rank'][4]['type']}}</dd>
+								<dd class="c_3">{{data['low_rank'][4]['ratio']}}</dd>	
 							</dl>
-
 						</section>
 						
 					</div>
@@ -170,13 +171,15 @@
 					<div class="rank_box">
 						<h3>매출</h3>
 						<td>
-							{{}}
+							{{data['sales']}}
+							{{data['last_sales']}}
 						</td>
 					</div>
 					<div class="rank_box">
 						<h3>폐업률</h3>
 						<td>
-							{{}}
+							{{data['closed_ratio']}}
+							{{data['last_closed_ratio']}}
 						</td>
 					</div>
 				</div>
@@ -192,14 +195,12 @@
 					<h3>배달이 활성화된 업종이 상승</h3>
 					배달이 활성화된 업종이 코로나 이후 상승세를 보이고 있다	
 				</div>
-				<div class="report_rank">
-					<div class="graph_box">
+				<table class="report_rank">
+					<tr class="graph_box">
 						<td>
-							{{}}
 						</td>
-					</div>
-					
-				</div>
+					</tr>
+				</table>
 
 			</div>
 		</div>

@@ -10,7 +10,7 @@ h1 {
 }
 .intro_bg{
     
-    background-image:url("../static/image/stock.jpg");
+    background-image:url("../image/stock.jpg");
     background-position: center;
     width: 100%;
     height: 718px;
@@ -273,3 +273,4 @@ h1 {
     text-align: center;
     background-color: #fff;
     box-shadow:0 6px 16px 0 rgba(0,0,0,0.15);
+}
