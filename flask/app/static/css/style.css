@@ -24,25 +24,28 @@ h1 {
     height: 86px;
 }
 
-.nav_area{
-    width: 50px;
-    height: 50px;
-    background:white;
+.search_area{
+    width: 200px;
+    height: 28px;
+    background:#fff;
     border-radius: 5px;
     margin-top: 24px;
 }
-.nav_area > div{
-    width: 45px;
-    height: 6px;
-    background: #000;
-    border-radius: 5px;
-    margin-bottom:5px;
-    margin-top:5px;
-    margin-left:2px;
+.search_area > form > input{
+    border: none;
+    width: 160px;
+    height: 15px;
+    background:#fff;
+    color: #000;
+    padding-left:10px;
+
+
 }
-#first_nav {
-    margin-top:10px;
+.serach_area > form > span{
+    width: 15px;
+    color:black;  
 }
+
 .nav{
     display: flex;
     justify-content: flex-end;

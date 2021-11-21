@@ -11,18 +11,20 @@
 	<body>
 		<div class="wrap">
 			<div class="intro_bg">
-				<div class="header">
-					<div class="search_area">
-						<form>
-							<input type="search" placeholder="Search">
-							<span>검색</span>
-						</form>	
+				<div class="header" id="link_header">
+					<div class="nav_area">
+						<div id="first_nav">
+						</div>
+						<div>
+						</div>
+						<div>
+						</div>
 					</div>
 					<ul class="nav">
-						<li><a href ='#'>HOME</a></li>
-						<li><a href="#">ABOUT</a></li>
-						<li><a href="#">SERVICE</a></li>
-						<li><a href="#">CONTACT</a></li>
+						<li><a href ='#link_header'>HOME</a></li>
+						<li><a href="#link_top_five">REVENUE</a></li>
+						<li><a href="#link_total_amount">CHANGE</a></li>
+						<li><a href="#link_trend_report">TREND</a></li>
 					</ul>
 				</div>
 				<div class="intro_title">
@@ -40,30 +42,30 @@
 				<li>
 					<div>
 						<div>가장 많은 업종</div>
-						<div>요식업</div>
+						<div>{{ type }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
 						<div>평균 매출</div>
-						<div>10,000,000 원</div>
+						<div>{{ sales }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
 						<div>인기가 많은 상권</div>
-						<div>종로구</div>
+						<div>{{ popular_place }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
 						<div>임대료가 싼 상권</div>
-						<div>은평구</div>
+						<div>{{ cheap_place }}</div>
 					</div>
 				</li>
 			</ul>
 			<!-- first page end  -->
-			<div class="top_five">
+			<div class="top_five" id="link_top_five">
 				<h1>
 					<b>01</b>
 					매출 증감률 상위,하위 업종
@@ -83,31 +85,31 @@
 							</header>
 							<dl class="first">
 								<dt class="c_1">1</dt>
-								<dd class="c_2">업종</dd>
-								<dd class="c_3">증가율</dd>	
+								<dd class="c_2">{{rank1_type}}</dd>
+								<dd class="c_3">{{rank1_ratio_up}}</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">2</dt>
-								<dd class="c_2">업종</dd>
-								<dd class="c_3">증가율</dd>
+								<dd class="c_2">{{rank2_type}}</dd>
+								<dd class="c_3">{{rank1_ratio_up}}</dd>
 								
 							</dl>
 							<dl>
 								<dt class="c_1">3</dt>
-								<dd class="c_2">업종</dd>
-								<dd class="c_3">증가율</dd>
+								<dd class="c_2">{{rank1_type}}</dd>
+								<dd class="c_3">{{rank1_ratio_up}}</dd>
 							
 							</dl>
 							<dl>
 								<dd class="c_1">4</dd>
-								<dd class="c_2">업종</dd>
-								<dd class="c_3">증가율</dd>
+								<dd class="c_2">{{rank1_type}}</dd>
+								<dd class="c_3">{{rank1_ratio_up}}</dd>
 								
 							</dl>
 							<dl>
 								<dt class="c_1">5</dt>
-								<dd class="c_2">업종</dd>
-								<dd class="c_3">증가율</dd>
+								<dd class="c_2">{{rank1_type}}</dd>
+								<dd class="c_3">{{rank1_ratio_up}}</dd>
 								
 							</dl>
 
@@ -124,31 +126,31 @@
 							</header>
 							<dl class="first">
 								<dt class="c_1">1</dt>
-								<dd class="c_2">업종</dd>
-								<dd class="c_3">증가율</dd>	
+								<dd class="c_2">{{rank1_type2}}</dd>
+								<dd class="c_3">{{rank1_ratio_up}}</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">2</dt>
-								<dd class="c_2">업종</dd>
-								<dd class="c_3">증가율</dd>
+								<dd class="c_2">{{rank2_type2}}</dd>
+								<dd class="c_3">{{rank2_ratio_down}}</dd>
 								
 							</dl>
 							<dl>
 								<dt class="c_1">3</dt>
-								<dd class="c_2">업종</dd>
-								<dd class="c_3">증가율</dd>
+								<dd class="c_2">{{rank3_type2}}</dd>
+								<dd class="c_3">{{rank3_ratio_down}}</dd>
 							
 							</dl>
 							<dl>
 								<dd class="c_1">4</dd>
-								<dd class="c_2">업종</dd>
-								<dd class="c_3">증가율</dd>
+								<dd class="c_2">{{rank4_type4}}</dd>
+								<dd class="c_3">{{rank4_ratio_down}}</dd>
 								
 							</dl>
 							<dl>
 								<dt class="c_1">5</dt>
-								<dd class="c_2">업종</dd>
-								<dd class="c_3">증가율</dd>
+								<dd class="c_2">{{rank5_type2}}</dd>
+								<dd class="c_3">{{rank5_ratio_down}}</dd>
 								
 							</dl>
 
@@ -159,7 +161,7 @@
 				</div>
 				<!-- second page -->
 			</div>
-			<div class="total_amount">
+			<div class="total_amount" id="link_total_amount">
 				<h1>
 					<b>02</b>
 					전체적 매출, 폐업률 변화
@@ -167,15 +169,21 @@
 				<div class="report_rank">
 					<div class="rank_box">
 						<h3>매출</h3>
+						<td>
+							{{}}
+						</td>
 					</div>
 					<div class="rank_box">
 						<h3>폐업률</h3>
+						<td>
+							{{}}
+						</td>
 					</div>
 				</div>
 				
 			</div>
 			<!-- fourth page -->
-			<div class="trend_report">
+			<div class="trend_report" id="link_trend_report">
 				<h1>
 					<b>03</b>
 					트렌드
@@ -186,7 +194,9 @@
 				</div>
 				<div class="report_rank">
 					<div class="graph_box">
-						
+						<td>
+							{{}}
+						</td>
 					</div>
 					
 				</div>
