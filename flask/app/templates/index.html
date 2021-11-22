@@ -7,6 +7,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
 	</head>
 	<body>
 		<div class="wrap">
@@ -178,14 +179,12 @@
 				<div class="report_rank">
 					<div class="rank_box">
 						<h3>매출</h3>
-						
+						<canvas id="sales_bar" width="350" height="300"></canvas>
 					</div>
 					<div class="rank_box">
 						<h3>폐업률</h3>
-						<td>
-							{{data['closed_ratio']}}
-							{{data['last_closed_ratio']}}
-						</td>
+						<canvas id="closed_bar" width="350" height="300"></canvas>
+
 					</div>
 				</div>
 				
@@ -202,14 +201,15 @@
 				</div>
 				<div class="report_rank">
 					<div class="graph_box">
-						<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-						<canvas id="pie-chart" width="250" height="250"></canvas>
+						<canvas id="trend_chart" width="500" height="350"></canvas>
 					</div>
 				</div>
 
 			</div>
 		</div>
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="../static/js/main.js"></script>
+		
 	
 	</body>
 </html>
