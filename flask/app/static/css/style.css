@@ -8,6 +8,7 @@
 h1 {
     font-size: 48px;
 }
+
 .intro_bg{
     
     background-image:url("../image/stock.jpg");
@@ -20,37 +21,67 @@ h1 {
     display: flex;
     width: 1280px;
     margin: auto;
-
     height: 86px;
 }
 
-.search_area{
-    width: 200px;
-    height: 28px;
-    background:#fff;
-    border-radius: 5px;
-    margin-top: 24px;
-}
-.search_area > form > input{
-    border: none;
-    width: 160px;
-    height: 15px;
-    background:#fff;
-    color: #000;
-    padding-left:10px;
-
+.btn_menu {
+    position: fixed;
+    left: 25px;
+    top: 25px;
+    min-width:61px;
+    width:61px;
+    height: 61px;
 
 }
-.serach_area > form > span{
-    width: 15px;
-    color:black;  
+.btn_close {
+    position: fixed;
+    left: 25px;
+    top: 25px;
+    min-width: 59px;
+    width: 59px;
+    height: 59px;
+    z-index: 1000;
+}
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding-left: 120px;
+    z-index: 1000;
+    background: rgba(17, 17, 17, 0.85);
+}
+.inner_nav { 
+    display: inline-block
+
+}
+.main_menu {
+   position: relative;
+   margin-top:22px;
+   display:inline-block; 
 }
 
+.main_menu > li {
+    display: flex;
+}
+.main_menu > li > a {
+    display: inline-block;
+    line-height: 64px;
+    font-size: 48px;
+    font-weight: 400;
+    font-family: "BM Hanna", sans-serif;
+    margin-bottom: 5px;
+    letter-spacing: -0.038em;
+    color:#ffffff;
+}
 .nav{
     display: flex;
     justify-content: flex-end;
     line-height: 86px;
-    width:calc(1290px - 300px);
+    width:calc(1290px - 50px);
+    background:rgba(17, 17, 17, 0.85)
     
     
 }

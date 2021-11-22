@@ -12,14 +12,22 @@
 		<div class="wrap">
 			<div class="intro_bg">
 				<div class="header" id="link_header">
-					<div class="nav_area">
-						<div id="first_nav">
-						</div>
-						<div>
-						</div>
-						<div>
-						</div>
+					<button onclick= "modal('block')" class="btn_menu">
+						menu	
+					</button>
+
+					<div class="modal" id="modal_on">
+						<nav class="inner_nav">
+							<ul class="main_menu">
+								<li><a href="#">요인분석</a></li>
+								<li><a href="#">매출분석</a></li>
+								<li><a href="#">트렌드</a></li>
+								
+							</ul>
+						</nav>
+						<button onclick='modal("none")' class="btn_close" id="modal_on">닫기</button>
 					</div>
+
 					<ul class="nav">
 						<li><a href ='#link_header'>HOME</a></li>
 						<li><a href="#link_top_five">REVENUE</a></li>
@@ -170,10 +178,7 @@
 				<div class="report_rank">
 					<div class="rank_box">
 						<h3>매출</h3>
-						<td>
-							{{data['sales']}}
-							{{data['last_sales']}}
-						</td>
+						
 					</div>
 					<div class="rank_box">
 						<h3>폐업률</h3>
@@ -195,14 +200,16 @@
 					<h3>배달이 활성화된 업종이 상승</h3>
 					배달이 활성화된 업종이 코로나 이후 상승세를 보이고 있다	
 				</div>
-				<table class="report_rank">
-					<tr class="graph_box">
-						<td>
-						</td>
-					</tr>
-				</table>
+				<div class="report_rank">
+					<div class="graph_box">
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+						<canvas id="pie-chart" width="250" height="250"></canvas>
+					</div>
+				</div>
 
 			</div>
 		</div>
+		<script type="text/javascript" src="../static/js/main.js"></script>
+	
 	</body>
 </html>
