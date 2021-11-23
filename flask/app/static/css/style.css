@@ -1,4 +1,4 @@
-*{	font-family: 'Noto Sans KR', sans-serif;
+* {	font-family: 'Noto Sans KR', sans-serif;
     list-style: none;
     text-decoration: none;
     border-collapse: collapse;
@@ -10,37 +10,52 @@ h1 {
 }
 
 .intro_bg{
-    
     background-image:url("../image/stock.jpg");
     background-position: center;
     width: 100%;
     height: 718px;
-
 }
-.header{
+
+.header {
     display: flex;
-    width: 1280px;
+    /* width: 1280px; */
+    width: 100%;
     margin: auto;
     height: 86px;
+    /* line-height: 86px; */
+    background:rgba(17, 17, 17, 0.85);
 }
 
 .btn_menu {
-    position: fixed;
-    left: 25px;
-    top: 25px;
+    /* display: relative;
+    left: 40px;
+    top: 12px; */
+    margin-top: 10px;
+    margin-left: 5px;
     min-width:61px;
-    width:61px;
+    width:40px;
     height: 61px;
-
+    z-index: 999;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    /* vertical-align: middle; */
+}
+.btn_menu img, .btn_close img {
+    width: 40px;
+    height: 40px;
 }
 .btn_close {
     position: fixed;
-    left: 25px;
-    top: 25px;
+    left: 20px;
+    top: 20px;
     min-width: 59px;
     width: 59px;
     height: 59px;
-    z-index: 1000;
+    z-index: 999;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
 }
 .modal {
     display: none;
@@ -54,8 +69,7 @@ h1 {
     background: rgba(17, 17, 17, 0.85);
 }
 .inner_nav { 
-    display: inline-block
-
+    display: inline-block;
 }
 .main_menu {
    position: relative;
@@ -69,24 +83,21 @@ h1 {
 .main_menu > li > a {
     display: inline-block;
     line-height: 64px;
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 400;
     font-family: "BM Hanna", sans-serif;
     margin-bottom: 5px;
     letter-spacing: -0.038em;
     color:#ffffff;
 }
-.nav{
+.nav {
     display: flex;
     justify-content: flex-end;
     line-height: 86px;
     width:calc(1290px - 50px);
-    background:rgba(17, 17, 17, 0.85)
-    
-    
 }
 .nav > li{
-    margin-left: 84px;
+    margin: 0 41px;
 }
 .nav > li > a {
     color:floralwhite;
