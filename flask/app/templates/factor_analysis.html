@@ -16,23 +16,29 @@
 					<h1>지역별 요인분석</h1>
 				</div>
 				<div class="map">
-					지도
+					
+					<iframe id="html-contents" src="seoulMarker.html"></iframe>        
+					
 				</div>
 				<div class="factors">
-					<div class="population">
-						인구수
+					<div id="first">
+						<canvas id="gender_ratio" width="400" height="250"></canvas>
 					</div>
-					<div class="house">
-						가구세대
+					<div id="second">
+						
+						<canvas id="age_ratio" width="400"	height="250"></canvas>
 					</div>
-					<div class="income">
-						수입
+					<div id="third">
+		
+						<canvas id='sales_ratio'width='400' height="250"></canvas>
 					</div>
-
-
 				</div>
-				
+				<div class="count">
+					<canvas id='count_store' width="600px" height="130px"></canvas>
+				</div>
 			</div>
 		</div>
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="../static/js/factor.js"></script>
 	</body>
 </html>
