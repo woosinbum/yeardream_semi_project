@@ -240,3 +240,29 @@ let lineChart = new Chart(store, {
 
 
 })
+
+
+            // let gender = document.getElementById('gender_ration').getCOntext('2d');
+            // let pieChart = new Chart(gender, {
+            //     type:'doughnut',
+            //     data: {
+            //         labels:['남성','여성'],
+            //         datasets
+            //     }
+            // })
+            // console.log(res)
+
+
+function ajax_test(value) {
+    $.ajax ({
+        type:'POST',
+        url:'/factor/get',
+        data:{'name':value},
+        success: function(res) {
+            // result 
+            lineChart.labels = result.
+            lineChart.updates()
+            console.log(res)
+        }
+    })
+}

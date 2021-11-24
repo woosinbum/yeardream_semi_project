@@ -19,9 +19,9 @@
 					<div class="modal" id="modal_on">
 						<nav class="inner_nav">
 							<ul class="main_menu">
-								<li><a href="#">요인분석</a></li>
-								<li><a href="#">매출분석</a></li>
-								<li><a href="#">트렌드</a></li>
+								<li><a href="	factor">요인분석</a></li>
+								<li><a href="#">부가서비스</a></li>
+								<li><a href="#">프렌차이즈</a></li>
 							</ul>
 						</nav>
 						<button onclick='modal("none")' class="btn_close" id="modal_on">
@@ -137,32 +137,33 @@
 								<span class="c_2">업종</span>
 								<span class="c_3">증가율</span>
 							</header>
+
 							<dl class="first">
+								
 								<dt class="c_1">1</dt>
-								<dd class="c_2">{{data['low_rank'][0]['type']}}</dd>
-								<dd class="c_3">{{data['low_rank'][0]['ratio']}}</dd>	
+								<dd class="c_2">{{data2[0].get('상권_코드')}}</dd>
+								<dd class="c_3">{{data2[0].get('전년도비_매출_증감률')}}</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">2</dt>
-								<dd class="c_2">{{data['low_rank'][1]['type']}}</dd>
-								<dd class="c_3">{{data['low_rank'][1]['ratio']}}</dd>	
+								<dd class="c_2">{{data2[1].get('상권_코드')}}</dd>
+								<dd class="c_3">{{data2[1].get('전년도비_매출_증감률')}}</dd>
 								
 							</dl>
 							<dl>
 								<dt class="c_1">3</dt>
-								<dd class="c_2">{{data['low_rank'][2]['type']}}</dd>
-								<dd class="c_3">{{data['low_rank'][2]['ratio']}}</dd>	
-							
+								<dd class="c_2">{{data2[2].get('상권_코드')}}</dd>
+								<dd class="c_3">{{data2[2].get('전년도비_매출_증감률')}}</dd>
 							</dl>
 							<dl>
 								<dd class="c_1">4</dd>
-								<dd class="c_2">{{data['low_rank'][3]['type']}}</dd>
-								<dd class="c_3">{{data['low_rank'][3]['ratio']}}</dd>	
+								<dd class="c_2">{{data2[3].get('상권_코드')}}</dd>
+								<dd class="c_3">{{data2[3].get('전년도비_매출_증감률')}}</dd>
 							</dl>
 							<dl>
 								<dt class="c_1">5</dt>
-								<dd class="c_2">{{data['low_rank'][4]['type']}}</dd>
-								<dd class="c_3">{{data['low_rank'][4]['ratio']}}</dd>	
+								<dd class="c_2">{{data2[4].get('상권_코드')}}</dd>
+								<dd class="c_3">{{data2[4].get('전년도비_매출_증감률')}}</dd>
 							</dl>
 						</section>
 						
