@@ -259,6 +259,9 @@ function ajax_test(value) {
         url:'/factor/get',
         data:{'name':value},
         success: function(res) {
+            // result 
+            lineChart.labels = result.
+            lineChart.updates()
             console.log(res)
         }
     })
