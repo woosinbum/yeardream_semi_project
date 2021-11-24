@@ -14,12 +14,14 @@ def factor_page():
 def factor_get_data():
     value = request.form.get("name")
     print(value)
-
-    data = list(col.find({"상권_코드": value}))
+    
+    query = {"상권_코드": int(value)}
+    projection = {'여성_매출_비율':True, '남성_매출_비율':True, '상권_코드':True}
+    data = list(col.find(query, projection))
+    
     
 
-
-    return jsonify(data[10])
+    return 
 
 
 
