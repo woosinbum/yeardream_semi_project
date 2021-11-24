@@ -16,13 +16,12 @@ def factor_get_data():
     print(value)
     
     query = {"상권_코드": int(value)}
-    projection = {'여성_매출_비율':True, '남성_매출_비율':True, '상권_코드':True}
+    projection = {'_id':False}
     data = list(col.find(query, projection))
     
     
 
-    return 
-
+    return jsonify(data)
 
 
     # return jsonify(data)

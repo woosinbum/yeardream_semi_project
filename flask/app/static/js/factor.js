@@ -1,56 +1,53 @@
-let gender = document.getElementById('gender_ratio').getContext('2d');
-let pieChart = new Chart(gender, {
-    type: 'doughnut',
-    data: {
-        labels: ['남성','여성'],
-        datasets:[{
-            label: 'gender_ratio',
-            data: [
-                43,
-                57
-            ],
-            backgroundColor:[
-                '#0367A6',
-                '#D9848B',
+// let gender = document.getElementById('gender_ratio').getContext('2d');
+// let pieChart = new Chart(gender, {
+//     type: 'doughnut',
+//     data: {
+//         labels: ['남성','여성'],
+//         datasets:[{
+//             label: 'gender_ratio',
+//             data:[],
+//             backgroundColor:[
+//                 '#0367A6',
+//                 '#D9848B',
 
-            ],
-            borderWidth:1,
-            borderColor : '#f0f0f0',
-            hoverBorderWidth:4,    
-        }],
-            scaleBeginAtZero: true,
+//             ],
+//             borderWidth:1,
+//             borderColor : '#f0f0f0',
+//             hoverBorderWidth:4,    
+//         }],
+//             scaleBeginAtZero: true,
 
-    },
-    options: {
-        responsive: false,
-        plugins: {
-            title: {
-                display: true,
-                text: '남녀 비율',
-                fontsize: 10,
-            },
-            legend :{
-                display: true,
-                position:'right',
-             },
-            tooltips: {
-                enabled: true,
-            },
-            layout: {
-                top:10,
-                left:10
-            },
-            pieceLabel: {
-                mode: "label",
-                position:"inside",
-                fontSize:11,
-                fontStyle:"bold"
-            }
-        }
-    }
+//     },
+//     options: {
+//         responsive: false,
+//         plugins: {
+//             title: {
+//                 display: true,
+//                 text: '남녀 비율',
+//                 fontsize: 10,
+//             },
+//             legend :{
+//                 display: true,
+//                 position:'right',
+//              },
+//             tooltips: {
+//                 enabled: true,
+//             },
+//             layout: {
+//                 top:10,
+//                 left:10
+//             },
+//             pieceLabel: {
+//                 mode: "label",
+//                 position:"inside",
+//                 fontSize:11,
+//                 fontStyle:"bold"
+//             }
+//         }
+//     }
 
 
-})
+// })
 
 let age = document.getElementById('age_ratio').getContext('2d');
 let ageChart = new Chart(age, {
@@ -260,8 +257,63 @@ function ajax_test(value) {
         data:{'name':value},
         success: function(res) {
             // result 
-            lineChart.labels = result.
-            lineChart.updates()
+            // lineChart.labels = result.
+            // lineChart.updates()
+            // pieChart.datasets.data=[res[0]['남성_매출_비율'],res[0]['여성_매출_비율']]
+            // pieChart.updates()
+            // alert(res[0]['남성_매출_비율'])
+            let gender = document.getElementById('gender_ratio').getContext('2d');
+            let pieChart = new Chart(gender, {
+                type: 'doughnut',
+                data: {
+                    labels: ['남성','여성'],
+                    datasets:[{
+                        label: 'gender_ratio',
+                        data:[res[0]['남성_매출_비율'],res[0]['여성_매출_비율']],
+                        backgroundColor:[
+                            '#0367A6',
+                            '#D9848B',
+
+                        ],
+                        borderWidth:1,
+                        borderColor : '#f0f0f0',
+                        hoverBorderWidth:4,    
+                    }],
+                        scaleBeginAtZero: true,
+
+                },
+                options: {
+                    responsive: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '남녀 비율',
+                            fontsize: 10,
+                        },
+                        legend :{
+                            display: true,
+                            position:'right',
+                        },
+                        tooltips: {
+                            enabled: true,
+                        },
+                        layout: {
+                            top:10,
+                            left:10
+                        },
+                        pieceLabel: {
+                            mode: "label",
+                            position:"inside",
+                            fontSize:11,
+                            fontStyle:"bold"
+                        }
+                    }
+                }
+
+
+            })
+
+
             console.log(res)
         }
     })
