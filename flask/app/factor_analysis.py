@@ -10,18 +10,22 @@ col = db.get_collection('sales_rate_gender')
 def factor_page():
     return render_template("factor_analysis.html")
 
-@factor.route("/factor/get", methods=["POST"])
-def factor_get_data():
-    value = request.form.get("name")
-    print(value)
-    
+#버튼에서 상권 별 업종 목록가져오는 api
+@factor.route("/factor/list", methods=['POST'])
+def factor_bring_data():
+    value = request.form.get("code")
     query = {"상권_코드": int(value)}
     projection = {'_id':False}
     data = list(col.find(query, projection))
-    
-    
-
     return jsonify(data)
 
 
+
+
+
     # return jsonify(data)
+
+
+@factor.route("/factor/map", methods=['GET'])
+def map_page():
+    return render_template("seoulMarker.html")

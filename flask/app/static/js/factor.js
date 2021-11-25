@@ -48,6 +48,7 @@
 
 
 // })
+var result;
 
 let age = document.getElementById('age_ratio').getContext('2d');
 let ageChart = new Chart(age, {
@@ -248,73 +249,118 @@ let lineChart = new Chart(store, {
             //     }
             // })
             // console.log(res)
+            
+// ajax button
 
+function get_data(value) {
+    let $target = $("select[name='ctg_name']");
 
-function ajax_test(value) {
+    $target.empty();
+    $target.append("<option value=''>선택</option>")
     $.ajax ({
         type:'POST',
-        url:'/factor/get',
-        data:{'name':value},
-        success: function(res) {
-            // result 
-            // lineChart.labels = result.
-            // lineChart.updates()
-            // pieChart.datasets.data=[res[0]['남성_매출_비율'],res[0]['여성_매출_비율']]
-            // pieChart.updates()
-            // alert(res[0]['남성_매출_비율'])
-            let gender = document.getElementById('gender_ratio').getContext('2d');
-            let pieChart = new Chart(gender, {
-                type: 'doughnut',
-                data: {
-                    labels: ['남성','여성'],
-                    datasets:[{
-                        label: 'gender_ratio',
-                        data:[res[0]['남성_매출_비율'],res[0]['여성_매출_비율']],
-                        backgroundColor:[
-                            '#0367A6',
-                            '#D9848B',
+        url:'/factor/list',
+        data:{'code':value},
+        success: function(temp){
+            result = temp;
 
-                        ],
-                        borderWidth:1,
-                        borderColor : '#f0f0f0',
-                        hoverBorderWidth:4,    
-                    }],
-                        scaleBeginAtZero: true,
+            for(let i=0; i<result.length;i++){
+                $target.append("<option value='"+i+"'>"+result[i]['서비스_업종_코드_명']+"</option>");
 
-                },
-                options: {
-                    responsive: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: '남녀 비율',
-                            fontsize: 10,
-                        },
-                        legend :{
-                            display: true,
-                            position:'right',
-                        },
-                        tooltips: {
-                            enabled: true,
-                        },
-                        layout: {
-                            top:10,
-                            left:10
-                        },
-                        pieceLabel: {
-                            mode: "label",
-                            position:"inside",
-                            fontSize:11,
-                            fontStyle:"bold"
-                        }
-                    }
-                }
+            }
 
-
-            })
-
-
-            console.log(res)
+            // for(let i=0; i<res.length; i++) {
+            //     console.log(res[i]);
+            // }
         }
+
     })
+
+}
+// ajax 옵션 자료
+
+// function get_test (x) {
+//     var $target = $ ("select[name='ctg_sub_name]")
+
+//     $target.empty();
+//     if(x == "") {
+//         $target.append("<option value=''>선택</option>");
+//         return;
+//     }
+//     $.ajax ({
+//         type:'POST',
+//         url:'factor/get/ctg',
+//         data:{p_no: x},
+//         dataType: 'json',
+//         successs: function(res) {
+//             if(res.length==0){
+//                 $target.append()
+//             }else{
+//                 $(res).each(function(i){
+//                     $target.append()
+//                 });
+//             }
+//         }
+
+
+//     })
+// }
+
+// ajax firts graph
+function ajax_test(value) {
+    
+    let gender = document.getElementById('gender_ratio').getContext('2d');
+    var pieChart = new Chart(gender, {
+        type: 'doughnut',
+        data: {
+            labels: ['남성','여성'],
+            datasets:[{
+                label: 'gender_ratio',
+                data:[],
+                backgroundColor:[
+                    '#0367A6',
+                    '#D9848B'
+                ],
+                borderWidth:1,
+                borderColor : '#f0f0f0',
+                hoverBorderWidth:4,    
+            }],
+                scaleBeginAtZero: true,
+
+        },
+        options: {
+            responsive: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '남녀 비율',
+                    fontsize: 10,
+                },
+                legend :{
+                    display: true,
+                    position:'right',
+                },
+                tooltips: {
+                    enabled: true,
+                },
+                layout: {
+                    top:10,
+                    left:10
+                },
+                pieceLabel: {
+                    mode: "label",
+                    position:"inside",
+                    fontSize:11,
+                    fontStyle:"bold"
+                }
+            }
+        }
+    });
+    // pieChart.data.datasets[0].data=[result[value]['남성_매출_비율'],result[value]['여성_매출_비율']];
+    // pieChart.update();
+    var data = [result[value]['남성_매출_비율'],result[value]['여성_매출_비율']]
+    function addData(pieChart, data, value) {
+        chart.data.datasets[value].data = data;
+        chart.update();
+     }    
 }
