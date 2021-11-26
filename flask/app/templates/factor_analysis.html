@@ -21,13 +21,20 @@
 
 				</div>
 				<div class="factors">
-					<button id="btn" value=1000010 onclick="get_data(this.value)">test</button>
-					<label for="cars">Choose service:</label>
+					<label for></label>
+					<select name="market_name"id="market" onchange="market_code()">
+						<option value="test">목록</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+					<button id="btn" value=1000011	 onclick="get_data(this.value)">test</button>
+					<label for="ctg">업종검색:</label>
 					<select name="ctg_name" id="service" onchange="ajax_test(this.value)">
-						<option value="test">test</option>
-						<option value="volvo">Volvo</option>
-						<option value="audi">Audi</option>
-						<option value="mercedes">Mercedes</option>
+						<option value="test">목록</option>
+						<option value="1"></option>
+						<option value="2"></option>
+						<option value="3"></option>
 					</select>
 					<!-- <button class="ajax" value="1000016" onclick="ajax_test(this.value)" >test</button>
 					<button class="ajax" >test</button>
@@ -42,7 +49,7 @@
 						<canvas id="age_ratio" width="400"	height="250"></canvas>
 					</div>
 					<div id="third">
-						<canvas id='sales_ratio'width='400' height="250"></canvas>
+						<canvas id='day_ratio'width='400' height="250"></canvas>
 					</div>
 				</div>
 				<div class="count">
