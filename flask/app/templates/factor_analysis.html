@@ -2,13 +2,13 @@
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
-		<title>서울시상권트렌드2021</title>
+		<title>요인분석</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="../static/css/factor.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>		
-	</head>
+	</head> 
 	<body>
 		<div class="container">
 			<div class="page">
@@ -16,47 +16,72 @@
 					<h1>지역별 요인분석</h1>
 				</div>
 				<div class="map">
-					
-					<iframe id="html-contents" src="/factor/map"></iframe>        
-
-				</div>
-				<div class="factors">
-					<label for></label>
-					<select name="market_name"id="market" onchange="market_code()">
-						<option value="test">목록</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-					</select>
-					<button id="btn" value=1000011	 onclick="get_data(this.value)">test</button>
-					<label for="ctg">업종검색:</label>
-					<select name="ctg_name" id="service" onchange="ajax_test(this.value)">
-						<option value="test">목록</option>
-						<option value="1"></option>
-						<option value="2"></option>
-						<option value="3"></option>
-					</select>
-					<!-- <button class="ajax" value="1000016" onclick="ajax_test(this.value)" >test</button>
-					<button class="ajax" >test</button>
-					<button class="ajax" >test</button>
-					<button class="ajax" >test</button>
-					<button class="ajax" >test</button> -->
-					<div id="first">
-						<canvas id="gender_ratio" width="400" height="250"></canvas>
-					</div>
-					<div id="second">
+					<!-- <h2>서울시 주요 상권 지도</h2> -->
+					<div class="map_range">
 						
-						<canvas id="age_ratio" width="400"	height="250"></canvas>
+						<iframe id="html-contents" src="/factor/map"></iframe>        
+						<div class="map_explain">
+							<!-- <h1>서울시 top5 상권</h1>
+							<p>이 상권들의 매출이 높은 이유를 설명</p> -->
+
+						</div>
 					</div>
-					<div id="third">
-						<canvas id='day_ratio'width='400' height="250"></canvas>
+					<div class="graph_range">
+						<div class="graph_box">
+							<canvas id="corr_1" widht="400" height="300"></canvas>
+							<script>
+								const ctx = document.getElementById('corr_1').getContext('2d');
+								const myChart = new Chart(ctx, {
+									type: 'bar',
+									data: {
+										labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+										datasets: [{
+											{%for i in data%}
+											label: {{data}},
+											data: [12, 19, 3, 5, 2, 3],
+											{%endfor%}
+											backgroundColor: [
+												'rgba(255, 99, 132, 0.2)',
+												'rgba(54, 162, 235, 0.2)',
+												'rgba(255, 206, 86, 0.2)',
+												'rgba(75, 192, 192, 0.2)',
+												'rgba(153, 102, 255, 0.2)',
+												'rgba(255, 159, 64, 0.2)'
+											],
+											borderColor: [
+												'rgba(255, 99, 132, 1)',
+												'rgba(54, 162, 235, 1)',
+												'rgba(255, 206, 86, 1)',
+												'rgba(75, 192, 192, 1)',
+												'rgba(153, 102, 255, 1)',
+												'rgba(255, 159, 64, 1)'
+											],
+											borderWidth: 1
+										}]
+									},
+									options: {
+										scales: {
+											y: {
+												beginAtZero: true
+											}
+										}
+									}
+								});
+								</script>
+						</div>
+						<div class="graph_box">
+							<canvas id="corr_2" widht="400" height="300"></canvas>
+						</div>
 					</div>
+					
 				</div>
-				<div class="count">
-					<canvas id='count_store' width="600px" height="130px"></canvas>
-				</div>
+			<div class="range">
+
+			</div>
+
 			</div>
 		</div>
+
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="../static/js/factor.js"></script>
 	</body>

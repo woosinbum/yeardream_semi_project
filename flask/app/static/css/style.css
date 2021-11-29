@@ -222,7 +222,8 @@ h1 {
 .c_2 {
     padding-left:59px;
     text-align:left;
-    flex :1 0 85px;
+    
+    flex :1 0 120px;
 }
 .c_3 {
     flex:1 0 144px;
@@ -241,7 +242,7 @@ h1 {
 }
 
 .ranking >dl.first{
-    width:clac(100% - 6px);
+    width:calc(100%-6px);
     height:60px;
     font-size: 20px;
     line-height: 24px;
@@ -318,4 +319,96 @@ h1 {
 }
 #trend_chart {
     margin:auto;
+}
+/* 그래프 구현 부분 */
+
+.side_bar {
+    display:blcok;
+    width:30%;
+    height:100%;
+    background:rgba(17, 17, 17, 0.85); 
+    position:fixed;
+    left: 0;
+    top:0;
+    
+    bottom: 0;
+    padding-left: 120px;
+    z-index: 1;
+    /* text-align: center; */
+    transform: translateX(1730px);
+    transition: transform 0.5s;
+}   
+
+.side_bar > div #first,#second,#third{
+	
+	display: block;
+	width: 500px;
+	height:260px;
+}
+
+
+ #first,#second,#third {
+    display:block;
+    margin: 0 auto;
+    width: 400px;
+    height:240px;
+    margin-bottom: 20px;
+    padding-bottom: 21px;
+    margin-top: 50px;
+    margin-left: -80px;
+    background-color: #fff;
+    box-shadow:0 4px 16px 0 rgba(89, 87, 238, 0.986);
+	border-radius: 5%;
+}
+
+#service {
+    margin-top:40px;
+    margin-left:5px;
+	display:inline-block;
+	width: 100px;
+	height: 20px;
+}
+#market {
+    margin-top:40px;
+    margin-left:5px;
+    margin-right:10px;
+	display:inline-block;
+	width: 120px;
+	height: 20px;
+}
+
+#market_header > label {
+    
+    margin-top:40px;
+    color: white;;
+    
+}
+#market_header {
+    display:flex;
+    width:400px;
+    height:20px;
+    margin-left:-70px;
+    
+}
+.side_btn {
+    width:52px;
+    height:52px;
+    margin-top: 50px;
+    border: none;
+    background:#38b3ff
+}
+.side_btn > img {
+    width: 44px;
+    height: 44px;
+}
+.side_btn_close {
+    border:none;
+}
+
+.side_btn_close > img {
+    width: 30px;
+    height: 30px;
+    position:absolute;
+    top:10px;
+    left:10px;
 }

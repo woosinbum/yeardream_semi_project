@@ -11,9 +11,10 @@
 	</head>
 	<body>
 		<div class="wrap">
+
 			<div class="intro_bg">
 				<div class="header" id="link_header">
-					<button onclick= "modal('block')" class="btn_menu">
+					<button onclick="modal('block')" class="btn_menu">
 						<img src="../static/image/menu_icon.png">
 					</button>
 					<div class="modal" id="modal_on">
@@ -24,10 +25,48 @@
 								<li><a href="#">프렌차이즈</a></li>
 							</ul>
 						</nav>
-						<button onclick='modal("none")' class="btn_close" id="modal_on">
+						<button onclick='modal("none")' class="btn_close" >
 							<img src="../static/image/close_icon.png">
 						</button>
 					</div>
+					<div class='side_bar'>
+						<div id="market_header">
+							<button class="side_btn_close">
+								<img src="../static/image/close_icon.png">
+							</button>
+							<label for='market_name'>시장검색:</label>
+							<select name="market_name"id="market" onchange="market_code(this.value)">
+								<option>선택</option>
+								{%for i in market%}
+									<option value="{{i.get('상권_코드')}}">{{i.get('상권_코드_명')}}</option>
+								{%endfor%}
+								<!-- <option value="test">목록</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option> -->
+							</select>
+							<label for="ctg">업종검색:</label>
+							<select name="ctg_name" id="service" onchange="get_service_list(this.value)">
+								<option value="test">목록</option>
+								<option value="1"></option>
+								<option value="2"></option>
+								<option value="3"></option>
+							</select>
+						</div>
+						<div id="first">
+
+							<canvas id="gender_ratio" width="400" height="250"></canvas>
+						</div>
+						<div id="second">
+							
+							<canvas id="age_ratio" width="400"	height="250"></canvas>
+						</div>
+						<div id="third">
+							<canvas id='day_ratio'width='400' height="250"></canvas>
+						</div>
+
+					</div>
+
 
 					<ul class="nav">
 						<li><a href ='#link_header'>HOME</a></li>
@@ -50,25 +89,25 @@
 			<ul class="amount">
 				<li>
 					<div>
-						<div>가장 매출이 높은 상권</div>
+						<div>최고 매출 상권</div>
 						<div>{{ data.get('highest_place') }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
-						<div>가장 매출이 높은업종</div>
+						<div>월별 최고매출 업종</div>
 						<div>{{ data.get('highest_type') }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
-						<div>가장 매출 상승률이 높은 상권</div>
+						<div>최고 매출상승률 상권</div>
 						<div>{{ data.get('highest_ratio_place') }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
-						<div>가장 매출 상승률이 높은 업종</div>
+						<div>최고 매출상승률 업종</div>
 						<div>{{ data.get('highest_ratio_type') }}</div>
 					</div>
 				</li>
@@ -86,17 +125,17 @@
 					매출 증감률 상위,하위 업종
 				</h1>
 				<div class="exp">
-					매출 증가 상위 업종에는 서비스, 요식업, 미용업
-					<br>매출 증가 하위 업종에는 서비스, 요식업, 미용업
+					2021년 서울시 기준 업종별 평균 매출 증감률을 나타냈으며
+					<br>점포수 증감률이 상이함을 참고하세요.
 				</div>
 				<div class="report_rank">
 					<div class="rank_box">
-						<h3>매출 증가 상위 업종</h3>
+						<h3>매출 증감률 상위 업종</h3>
 						<section class="ranking">
 							<header>
 								<span class="c_1">순위</span>
 								<span class="c_2">업종</span>
-								<span class="c_3">증가율</span>
+								<span class="c_3">증감율</span>
 							</header>
 							<dl class="first">
 								<dt class="c_1">1</dt>
@@ -130,40 +169,40 @@
 
 					</div>
 					<div class="rank_box">
-						<h3>매출 증가 상위 업종</h3>
+						<h3>매출 증감률 하위 업종</h3>
 						<section class="ranking">
 							<header>
 								<span class="c_1">순위</span>
 								<span class="c_2">업종</span>
-								<span class="c_3">증가율</span>
+								<span class="c_3">증감율</span>
 							</header>
 
 							<dl class="first">
 								
 								<dt class="c_1">1</dt>
-								<dd class="c_2">{{data2[0].get('상권_코드')}}</dd>
-								<dd class="c_3">{{data2[0].get('전년도비_매출_증감률')}}</dd>	
+								<dd class="c_2">{{data['low_rank'][0]['type']}}</dd>
+								<dd class="c_3">{{data['low_rank'][0]['ratio']}}</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">2</dt>
-								<dd class="c_2">{{data2[1].get('상권_코드')}}</dd>
-								<dd class="c_3">{{data2[1].get('전년도비_매출_증감률')}}</dd>
+								<dd class="c_2">{{data['low_rank'][1]['type']}}</dd>
+								<dd class="c_3">{{data['low_rank'][1]['ratio']}}</dd>
 								
 							</dl>
 							<dl>
 								<dt class="c_1">3</dt>
-								<dd class="c_2">{{data2[2].get('상권_코드')}}</dd>
-								<dd class="c_3">{{data2[2].get('전년도비_매출_증감률')}}</dd>
+								<dd class="c_2">{{data['low_rank'][2]['type']}}</dd>
+								<dd class="c_3">{{data['low_rank'][2]['ratio']}}</dd>
 							</dl>
 							<dl>
 								<dd class="c_1">4</dd>
-								<dd class="c_2">{{data2[3].get('상권_코드')}}</dd>
-								<dd class="c_3">{{data2[3].get('전년도비_매출_증감률')}}</dd>
+								<dd class="c_2">{{data['low_rank'][3]['type']}}</dd>
+								<dd class="c_3">{{data['low_rank'][3]['ratio']}}</dd>
 							</dl>
 							<dl>
 								<dt class="c_1">5</dt>
-								<dd class="c_2">{{data2[4].get('상권_코드')}}</dd>
-								<dd class="c_3">{{data2[4].get('전년도비_매출_증감률')}}</dd>
+								<dd class="c_2">{{data['low_rank'][4]['type']}}</dd>
+								<dd class="c_3">{{data['low_rank'][4]['ratio']}}</dd>
 							</dl>
 						</section>
 						
@@ -201,9 +240,15 @@
 					배달이 활성화된 업종이 코로나 이후 상승세를 보이고 있다	
 				</div>
 				<div class="report_rank">
+					
 					<div class="graph_box">
 						<canvas id="trend_chart" width="500" height="350"></canvas>
 					</div>
+
+					<button class="side_btn">
+						<img src="../static/image/menu_icon.png">
+					</button>
+
 				</div>
 
 			</div>
