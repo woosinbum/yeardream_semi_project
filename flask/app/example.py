@@ -13,3 +13,4 @@ def first_route():
 @bp.route('/second',methods=['GET'])
 def second_route():
     return jsonify('second page')
+
