@@ -7,7 +7,7 @@ services:
         environment:
             - APP_NAME=MarketingAreaAnalysis
         expose:
-            - 8080
+            - 5000
         volumes:
           - /home/ubuntu/elice-team5-projects/flask:/app
     nginx:
