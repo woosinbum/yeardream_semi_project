@@ -1,4 +1,4 @@
-from re import T
+
 from flask import Blueprint, render_template, jsonify, request
 from pymongo import MongoClient
 

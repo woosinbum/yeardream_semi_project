@@ -22,7 +22,7 @@
 							<ul class="main_menu">
 								<li><a href="/factor">요인분석</a></li>
 								<li><a href="#">부가서비스</a></li>
-								<li><a href="#">프렌차이즈</a></li>
+								
 							</ul>
 						</nav>
 						<button onclick='modal("none")' class="btn_close" >
@@ -90,7 +90,7 @@
 				<li>
 					<div>
 						<div><b>최고 매출 상권</b></div>
-						<div>{{ data.get('highest_place') }}</div>
+						<div>용산 전자 상가</div>
 					</div>
 				</li>
 				<li>
@@ -113,8 +113,8 @@
 				</li>
 				<li>
 					<div>
-						<div><b>평균 매출</b></div>
-						<div>{{ data.get('sales') }}</div>
+						<div><b>월 평균 매출</b></div>
+						<div>29,115,920원</div>
 					</div>
 				</li>
 			</ul>
@@ -140,30 +140,30 @@
 							<dl class="first">
 								<dt class="c_1">1</dt>
 								<dd class="c_2">{{sales_top[0]['서비스_업종_코드_명']}}</dd>
-								<dd class="c_3">{{sales_top[0]['전년도비_매출_증감률']}}</dd>	
+								<dd class="c_3">{{sales_top[0]['전년도비_매출_증감률']}}%</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">2</dt>
 								<dd class="c_2">{{sales_top[1]['서비스_업종_코드_명']}}</dd>
-								<dd class="c_3">{{sales_top[1]['전년도비_매출_증감률']}}</dd>	
+								<dd class="c_3">{{sales_top[1]['전년도비_매출_증감률']}}%</dd>	
 								
 							</dl>
 							<dl>
 								<dt class="c_1">3</dt>
 								<dd class="c_2">{{sales_top[2]['서비스_업종_코드_명']}}</dd>
-								<dd class="c_3">{{sales_top[2]['전년도비_매출_증감률']}}</dd>	
+								<dd class="c_3">{{sales_top[2]['전년도비_매출_증감률']}}%</dd>	
 							
 							</dl>
 							<dl>
 								<dd class="c_1">4</dd>
 								<dd class="c_2">{{sales_top[3]['서비스_업종_코드_명']}}</dd>
-								<dd class="c_3">{{sales_top[3]['전년도비_매출_증감률']}}</dd>	
+								<dd class="c_3">{{sales_top[3]['전년도비_매출_증감률']}}%</dd>	
 								
 							</dl>
 							<dl>
 								<dt class="c_1">5</dt>
 								<dd class="c_2">{{sales_top[4]['서비스_업종_코드_명']}}</dd>
-								<dd class="c_3">{{sales_top[4]['전년도비_매출_증감률']}}</dd>	
+								<dd class="c_3">{{sales_top[4]['전년도비_매출_증감률']}}%</dd>	
 							</dl>
 						</section>
 
@@ -180,30 +180,30 @@
 							<dl class="first">
 								<dt class="c_1">1</dt>
 								<dd class="c_2">{{sales_low[0]['서비스_업종_코드_명']}}</dd>
-								<dd class="c_3">{{sales_low[0]['전년도비_매출_증감률']}}</dd>	
+								<dd class="c_3">{{sales_low[0]['전년도비_매출_증감률']}}%</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">2</dt>
 								<dd class="c_2">{{sales_low[1]['서비스_업종_코드_명']}}</dd>
-								<dd class="c_3">{{sales_low[1]['전년도비_매출_증감률']}}</dd>	
+								<dd class="c_3">{{sales_low[1]['전년도비_매출_증감률']}}%</dd>	
 								
 							</dl>
 							<dl>
 								<dt class="c_1">3</dt>
 								<dd class="c_2">{{sales_low[2]['서비스_업종_코드_명']}}</dd>
-								<dd class="c_3">{{sales_low[2]['전년도비_매출_증감률']}}</dd>	
+								<dd class="c_3">{{sales_low[2]['전년도비_매출_증감률']}}%</dd>	
 							
 							</dl>
 							<dl>
 								<dd class="c_1">4</dd>
 								<dd class="c_2">{{sales_low[3]['서비스_업종_코드_명']}}</dd>
-								<dd class="c_3">{{sales_low[3]['전년도비_매출_증감률']}}</dd>	
+								<dd class="c_3">{{sales_low[3]['전년도비_매출_증감률']}}%</dd>	
 								
 							</dl>
 							<dl>
 								<dt class="c_1">5</dt>
 								<dd class="c_2">{{sales_low[4]['서비스_업종_코드_명']}}</dd>
-								<dd class="c_3">{{sales_low[4]['전년도비_매출_증감률']}}</dd>	
+								<dd class="c_3">{{sales_low[4]['전년도비_매출_증감률']}}%</dd>	
 							</dl>
 						</section>
 						
