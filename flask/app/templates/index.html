@@ -89,31 +89,31 @@
 			<ul class="amount">
 				<li>
 					<div>
-						<div>최고 매출 상권</div>
+						<div><b>최고 매출 상권</b></div>
 						<div>{{ data.get('highest_place') }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
-						<div>월별 최고매출 업종</div>
+						<div><b>월별 최고매출 업종</b></div>
 						<div>{{ data.get('highest_type') }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
-						<div>최고 매출상승률 상권</div>
+						<div><b>최고 매출상승률 상권</b></div>
 						<div>{{ data.get('highest_ratio_place') }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
-						<div>최고 매출상승률 업종</div>
+						<div><b>최고 매출상승률 업종</b></div>
 						<div>{{ data.get('highest_ratio_type') }}</div>
 					</div>
 				</li>
 				<li>
 					<div>
-						<div>평균 매출</div>
+						<div><b>평균 매출</b></div>
 						<div>{{ data.get('sales') }}</div>
 					</div>
 				</li>
@@ -139,31 +139,31 @@
 							</header>
 							<dl class="first">
 								<dt class="c_1">1</dt>
-								<dd class="c_2">{{data['high_rank'][0]['type']}}</dd>
-								<dd class="c_3">{{data['high_rank'][0]['ratio']}}</dd>	
+								<dd class="c_2">{{sales_top[0]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_3">{{sales_top[0]['전년도비_매출_증감률']}}</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">2</dt>
-								<dd class="c_2">{{data['high_rank'][1]['type']}}</dd>
-								<dd class="c_3">{{data['high_rank'][1]['ratio']}}</dd>	
+								<dd class="c_2">{{sales_top[1]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_3">{{sales_top[1]['전년도비_매출_증감률']}}</dd>	
 								
 							</dl>
 							<dl>
 								<dt class="c_1">3</dt>
-								<dd class="c_2">{{data['high_rank'][2]['type']}}</dd>
-								<dd class="c_3">{{data['high_rank'][2]['ratio']}}</dd>	
+								<dd class="c_2">{{sales_top[2]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_3">{{sales_top[2]['전년도비_매출_증감률']}}</dd>	
 							
 							</dl>
 							<dl>
 								<dd class="c_1">4</dd>
-								<dd class="c_2">{{data['high_rank'][3]['type']}}</dd>
-								<dd class="c_3">{{data['high_rank'][3]['ratio']}}</dd>	
+								<dd class="c_2">{{sales_top[3]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_3">{{sales_top[3]['전년도비_매출_증감률']}}</dd>	
 								
 							</dl>
 							<dl>
 								<dt class="c_1">5</dt>
-								<dd class="c_2">{{data['high_rank'][4]['type']}}</dd>
-								<dd class="c_3">{{data['high_rank'][4]['ratio']}}</dd>	
+								<dd class="c_2">{{sales_top[4]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_3">{{sales_top[4]['전년도비_매출_증감률']}}</dd>	
 							</dl>
 						</section>
 
@@ -178,31 +178,32 @@
 							</header>
 
 							<dl class="first">
-								
 								<dt class="c_1">1</dt>
-								<dd class="c_2">{{data['low_rank'][0]['type']}}</dd>
-								<dd class="c_3">{{data['low_rank'][0]['ratio']}}</dd>	
+								<dd class="c_2">{{sales_low[0]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_3">{{sales_low[0]['전년도비_매출_증감률']}}</dd>	
 							</dl>
 							<dl>
 								<dt class="c_1">2</dt>
-								<dd class="c_2">{{data['low_rank'][1]['type']}}</dd>
-								<dd class="c_3">{{data['low_rank'][1]['ratio']}}</dd>
+								<dd class="c_2">{{sales_low[1]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_3">{{sales_low[1]['전년도비_매출_증감률']}}</dd>	
 								
 							</dl>
 							<dl>
 								<dt class="c_1">3</dt>
-								<dd class="c_2">{{data['low_rank'][2]['type']}}</dd>
-								<dd class="c_3">{{data['low_rank'][2]['ratio']}}</dd>
+								<dd class="c_2">{{sales_low[2]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_3">{{sales_low[2]['전년도비_매출_증감률']}}</dd>	
+							
 							</dl>
 							<dl>
 								<dd class="c_1">4</dd>
-								<dd class="c_2">{{data['low_rank'][3]['type']}}</dd>
-								<dd class="c_3">{{data['low_rank'][3]['ratio']}}</dd>
+								<dd class="c_2">{{sales_low[3]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_3">{{sales_low[3]['전년도비_매출_증감률']}}</dd>	
+								
 							</dl>
 							<dl>
 								<dt class="c_1">5</dt>
-								<dd class="c_2">{{data['low_rank'][4]['type']}}</dd>
-								<dd class="c_3">{{data['low_rank'][4]['ratio']}}</dd>
+								<dd class="c_2">{{sales_low[4]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_3">{{sales_low[4]['전년도비_매출_증감률']}}</dd>	
 							</dl>
 						</section>
 						
@@ -214,16 +215,114 @@
 			<div class="total_amount" id="link_total_amount">
 				<h1>
 					<b>02</b>
-					전체적 매출, 폐업률 변화
+					전체적 매출, 점포수 변화
 				</h1>
 				<div class="report_rank">
 					<div class="rank_box">
 						<h3>매출</h3>
 						<canvas id="sales_bar" width="350" height="300"></canvas>
+						<script>
+							const rev = document.getElementById('sales_bar').getContext('2d');
+							const revenueChart = new Chart(rev, {
+								type: 'line',
+								data: {
+									labels: {{revenue[0] | tojson}},
+									datasets: [{
+										label: '상관관계',
+										data: {{revenue[1] | tojson}},
+										backgroundColor: [
+											'#f0f0f0'
+										],
+										borderColor: [
+											
+										],
+										borderWidth: 2,
+										borderColor: '#000',
+										hoverBorderWidth:4,
+									}]
+								},
+								options: {
+									responsive: false,
+									scales: {
+										x:{
+											grid:{
+												display:false,
+											}
+										},
+										y: {
+											grid:{
+												display:false,
+											},
+											beginAtZero: true
+										}
+									},
+									plugins: {
+									title:{
+										display:false,
+										text:"유동인구 상관관계",
+										fontSize:10
+									},
+									legend:{
+										display:false,
+									}
+								}
+								}
+								
+							});
+						</script>
 					</div>
 					<div class="rank_box">
-						<h3>폐업률</h3>
+						<h3>점포수</h3>
 						<canvas id="closed_bar" width="350" height="300"></canvas>
+						<script>
+							const store = document.getElementById('closed_bar').getContext('2d');
+							const storeChart = new Chart(store, {
+								type: 'line',
+								data: {
+									labels: {{store[0] | tojson}},
+									datasets: [{
+										label: '상관관계',
+										data: {{store[1] | tojson}},
+										backgroundColor: [
+											'#f0f0f0'
+										],
+										borderColor: [
+											
+										],
+										borderWidth: 2,
+										borderColor: '#000',
+										hoverBorderWidth:4,
+									}]
+								},
+								options: {
+									responsive: false,
+									scales: {
+										x:{
+											grid:{
+												display:false,
+											}
+										},
+										y: {
+											grid:{
+												display:false,
+											},
+											beginAtZero: true
+										}
+									},
+									plugins: {
+									title:{
+										display:false,
+										text:"유동인구 상관관계",
+										fontSize:10
+									},
+									legend:{
+										display:false,
+									}
+								}
+								}
+								
+							});
+						</script>
 
 					</div>
 				</div>
@@ -236,13 +335,67 @@
 					트렌드
 				</h1>
 				<div class="exp">
-					<h3>배달이 활성화된 업종이 상승</h3>
-					배달이 활성화된 업종이 코로나 이후 상승세를 보이고 있다	
+					<h3>서울시 상위 업종 10가지</h3>
+					기타업종엔 53가지의 업종이 포함되어 있으며
+					<br>책갈피를 클릭하면 상권별 업종 세부 정보를 알아볼 수 있습니다.
 				</div>
 				<div class="report_rank">
 					
 					<div class="graph_box">
 						<canvas id="trend_chart" width="500" height="350"></canvas>
+						<script>
+							const trend = document.getElementById('trend_chart').getContext('2d');
+							const trendChart = new Chart(trend, {
+							    type: 'pie',
+							    data: {
+							        labels:{{trend[0] | tojson}},
+							        datasets:[{
+							            label: 'trend_view',
+							            data: {{trend[1] | tojson}},
+							            backgroundColor:[
+											'#084081',
+											'#0868ac',
+											'#2b8cbe',
+											'#4292c6',
+											'#6baed6',
+											'#4eb3d3',
+											'#7bccc4',
+											'#a8ddb5',
+											'#ccebc5',
+											'#e0f3db',
+											'#D7EAFC',
+
+										],
+							            borderWidth:0.3,
+							            borderColor :'#f0f0f0',
+							            hoverBorderWidth:4,    
+							        }]
+								
+							    },
+							    options: {
+							        responsive: false,
+							        plugins: {
+							            title: {
+							                display: true,
+							                text: 'trend',
+							                fontsize: 10,
+							            },
+							            legend :{
+							                display: true,
+							                position:'left',
+							             },
+							            tooltips: {
+							                enabled: true,
+							            },
+							            layout: {
+							                top:10
+							            },
+							        }
+							    }
+							
+							
+							})
+						</script>
 					</div>
 
 					<button class="side_btn">
