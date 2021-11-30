@@ -1,6 +1,6 @@
 from flask import Flask, render_template, Blueprint, request, jsonify   
 from pymongo import MongoClient
-import json
+
 factor = Blueprint('factor',__name__)
 
 connection = MongoClient("mongodb+srv://user1:uZGuuMyRngM3izgG@cluster0.cu0c3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
@@ -61,15 +61,15 @@ make_label_data(income_data,income_lab,income_cor,income_col)
 def factor_page():
 
     return render_template("factor_analysis.html", 
-    job_data=job_data,
-    fac_data=fac_data,
-    foot_data=foot_data, 
-    income_data=income_data)
+                            job_data=job_data,
+                            fac_data=fac_data,
+                            foot_data=foot_data, 
+                            income_data=income_data)
     
 
 
 @factor.route("/factor/map", methods=['GET'])
 def map_page():
-    return render_template("seoulMarker.html")
+    return render_template("factor-analysis2.html")
 
 

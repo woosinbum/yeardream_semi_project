@@ -13,6 +13,21 @@
 		<div class="container">
 			<div class="page">
 				<div class="header">
+					<button onclick="modal('block')" class="btn_menu">
+						<img src="../static/image/menu_icon.png">
+					</button>
+					<div class="modal" id="modal_on">
+						<nav class="inner_nav">
+							<ul class="main_menu">
+								<li><a href="/">메인</a></li>
+								<li><a href="#">부가서비스</a></li>
+								
+							</ul>
+						</nav>
+						<button onclick='modal("none")' class="btn_close" >
+							<img src="../static/image/close_icon.png">
+						</button>
+					</div>
 					<h1>
 						<b>매출 요인분석</b>
 					</h1>
@@ -24,7 +39,7 @@
 						<iframe id="html-contents" src="/factor/map"></iframe>        
 						<div class="map_explain">
 							<h1>
-								<b>TOP5!</b>
+								<b>TOP10%</b>
 								서울시 주요 상권
 							</h1>
 							<p>서울시에서 매출이 가장 높은 상권에는 어떤 이유가 있을까?</p>
@@ -256,6 +271,6 @@
 		</div>
 
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-		
+		<script type="text/javascript" src="../static/js/factor.js"></script>
 	</body>
 </html>
