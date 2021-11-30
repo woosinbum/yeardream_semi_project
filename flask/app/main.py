@@ -1,6 +1,6 @@
 from flask import Flask,render_template
-from app.main_api import main
-from app.factor_analysis import factor
+from main_api import main
+from factor_analysis import factor
 
 app = Flask(__name__)
 

@@ -290,7 +290,7 @@ h1 {
 }
 
 .trend_report > h1{
-    padding-top: 116px;
+    
     text-align: center;
     font-size: 32px;
 }
@@ -395,7 +395,7 @@ h1 {
     height:52px;
     margin-top: 50px;
     border: none;
-    background:#38b3ff
+    background:rgba(17, 17, 17, 0.85)
 }
 .side_btn > img {
     width: 44px;
