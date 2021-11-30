@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+	background: #f0f0f0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.wrap {
+    width: 100%;
+}
+
+a .main_btn {
+    width: 30px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.search_box {
+    width: 500px;
+    height: 250px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+#detail_commercial_area {
+    width: 200px;
+    /* height: 200px; */
+    padding: 20px;
+    list-style-type: none;
+    background-color: white;
+    /* overflow-y: auto; */
+    overflow: auto;
+    height: auto;
+    max-height: 150px;
+}
+
+.add_li {
+    background-color: white;
+    line-height: 30px;
+}
+
+#commercial_area {
+    background-color: white;
+    border: 1px solid;
+    height: 30px;
+    padding: .3em .5em;
+    margin-right: 10px;
+}
+
+/* select */
+#upjong {
+    background-color: white;
+    width: 120px;
+    height: 35px;
+    padding: .3em .5em;
+}
+
+.search_btn {
+    width: 50px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    /* background-color: #008CBA; */
+    background-color: #555555;
+    color: white;
+    margin: 0 10px;
+}
+
+.area_list {
+    display: none;
+}
+
+.data_box {
+    width: 700px;
+    height: auto;
+    margin: 0 auto;
+}
+
+#arbeit, #franchise, #real_estate {
+    width: 700px;
+    height: 500px;
+}
+
+#arbeit_chart, #franchise_chart {
+    width: 700px;
+    height: 300px;
+}
+
+#day, #time, #stability, #profitability {
+    width: 350px;
+    height: 350px;
+    /* margin: 10px 20px; */
+    float: left;
+}
+
+#canvas_day, #canvas_time, #canvas_stability, #canvas_profitability {
+    margin: 10px auto;
+    background-color: white;
+}
+
+#item_list {
+    list-style-type: none;
+}
+
+#item_list li {
+    margin: 20px 0;
+}
+
+#item_list li p {
+    margin: 5px 0;
+}
+
+.li_title {
+    font-weight: bold;
+    margin-top: 5px;
+    margin-right: 10px; 
+}
+
+.li_content {
+    margin-top: 5px;
+    margin-right: 5px; 
+}

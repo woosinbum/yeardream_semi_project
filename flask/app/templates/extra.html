@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>프랜차이즈 분석</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/extra.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="header">
+                <a href="/main">
+                    <img src="../static/image/home_icon.png" class="main_btn">
+                </a>
+                <ul class="nav">
+                    <li><a href='#arbeit'>아르바이트</a></li> <!-- 아르바이트 -->
+                    <li><a href="#franchise">프랜차이즈</a></li> <!-- 프랜차이즈 -->
+                    <li><a href="#real_estate">부동산</a></li> <!-- 부동산 매물 -->
+                </ul>
+            </div>
+            <div class="search_box">
+                <label>상권명: </label>
+                <input type="text" id="commercial_area" placeholder="예) 양화로1길">
+                <label>업종 선택: </label>
+                <select id="upjong">
+                    <option value="" selected>업종</option>
+                </select>
+                <button class="search_btn">검색</button>
+                <div class="area_list">
+                    <ul id="detail_commercial_area">
+
+                    </ul>
+                </div>
+                <!-- <select name="detail_commercial_area">
+                    <option value="choice" selected>선택</option>
+                </select> -->
+            </div>
+            <div class="data_box">
+                <div id="arbeit">
+                    <h2>아르바이트</h2>
+                    <div id="arbeit_chart">
+                        <div id="day">
+                            <canvas id="canvas_day"></canvas>
+                        </div>
+                        <div id="time">
+                            <canvas id="canvas_time"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div id="franchise">
+                    <h2>프랜차이즈</h2>
+                    <div id="franchise_chart">
+                        <div id="stability">
+                            <canvas id="canvas_stability"></canvas>
+                        </div>
+                        <div id="profitability">
+                            <canvas id="canvas_profitability"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div id="real_estate">
+                    <h2>부동산</h2>
+                    <div class="item_area">
+                        <ul id="item_list">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="../static/js/extra.js"></script>
+</html>
+
+
+                    <!-- <p style="margin: 10px auto">해당 상권의 매출 증감량이 높은 업종의 프랜차이즈 정보</p> -->
+                    <!-- <div>
+                        <p stype="float: right; color: #555555;"></p>
+                        <select id="franchise_type">
+                            <option value="안정성" selected>안정성</option>
+                            <option value="수익성">수익성</option>
+                            <option value="가맹점 현황 정보">가맹점 현황 정보</option>
+                            <option value="가맹점 창업비용">가맹점 창업비용</option>
+                        </select>
+                    </div> -->
