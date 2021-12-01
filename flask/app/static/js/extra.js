@@ -386,22 +386,6 @@ function get_extra_datas($commercial_area, $upjong) {
 
                 $("#franchise_chart").before(franchise_str);
             }
-
-            // 부동산
-            // $("#real_eatate").css("height", "auto");
-            // $("#real_estate h4").remove();
-            // $("#item_list").before("<h4 style='margin: 20px'>"+result[4][0]["소재지"]+"</h4>");
-
-            // for(let i=0; i<result[4].length; i++) {
-            //     li_str = "<li><p><span class='li_title'>"+result[4][i]["가격"]+"</span>";
-            //     li_str += "<span class='li_title'>"+result[4][i]["거래방식"]+"</span></p>";
-            //     li_str += "<p><span class='li_content'>계약/전용면적: "+result[4][i]["계약/전용면적"]+"</span>";
-            //     li_str += "<span class='li_content'>해당층/총층: "+result[4][i]["해당층/총층"]+"</span>";
-            //     li_str += "<span class='li_content'>방향: "+result[4][i]["방향"]+"</span></p>";
-            //     li_str += "<p><span class='li_content'>"+result[4][i]["매물특징"]+"</span></p></li>";
-
-            //     $("#item_list").append(li_str);
-            // }
         }
     });
 }
