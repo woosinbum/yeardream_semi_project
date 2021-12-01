@@ -15,48 +15,43 @@
 			<!-- <section id="side_bar_wrap">  -->
 				<!-- <div class='side_bar'> -->
 				<div id="market_header">
-					<button class="side_btn_close">
+					<button class="btn_side_close">
 						<img src="../static/image/close_icon.png">
 					</button>
 				</div>
-					<div class="side_bar_header">
-						<label for='market_name'>시장검색:</label>
-						<select name="market_name"id="market" onchange="market_code(this.value)">
-							<option>선택</option>
-							{%for i in market%}
-								<option value="{{i.get('상권_코드')}}">{{i.get('상권_코드_명')}}</option>
-							{%endfor%}
-							<!-- <option value="test">목록</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option> -->
-						</select>
-						<label for="ctg">업종검색:</label>
-						<select name="ctg_name" id="service" onchange="get_service_list(this.value)">
-							<option value="test">목록</option>
-							<option value="1"></option>
-							<option value="2"></option>
-							<option value="3"></option>
-						</select>
-					</div>
+				<div class="side_bar_header">
+					<label for='market_name'>시장검색:</label>
+					<select name="market_name"id="market" onchange="market_code(this.value)">
+						<option>선택</option>
+						{%for i in market%}
+							<option value="{{i.get('상권_코드')}}">{{i.get('상권_코드_명')}}</option>
+						{%endfor%}
+					</select>
+					<label for="ctg">업종검색:</label>
+					<select name="ctg_name" id="service" onchange="get_service_list(this.value)">
+						<option value="test">목록</option>
+						<option value="1"></option>
+						<option value="2"></option>
+						<option value="3"></option>
+					</select>
+				</div>
 				<div id="first">
-
 					<canvas id="gender_ratio" width="400" height="250"></canvas>
 				</div>
 				<div id="second">
-					
 					<canvas id="age_ratio" width="400"	height="250"></canvas>
 				</div>
 				<div id="third">
 					<canvas id='day_ratio'width='400' height="250"></canvas>
 				</div>
-
 				<!-- </div> -->
 			</section>
 
 			<div class="intro_bg">
-				<div class="header" id="link_header">
-					<button onclick="modal('block')" class="btn_menu">
+				<!-- <div class="header"> -->
+				<!-- <header id="link_header"> -->
+				<header>
+					<button class="btn_menu" onclick="modal('block')">
 						<img src="../static/image/menu_icon.png">
 					</button>
 					<div class="modal" id="modal_on">
@@ -64,21 +59,20 @@
 							<ul class="main_menu">
 								<li><a href="/factor">요인분석</a></li>
 								<li><a href="/extra">부가서비스</a></li>
-								
 							</ul>
 						</nav>
-						<button onclick='modal("none")' class="btn_close" >
+						<button class="btn_close" onclick="modal('none')">
 							<img src="../static/image/close_icon.png">
 						</button>
 					</div>
-
 					<ul class="nav">
-						<li><a href ='#link_header'>HOME</a></li>
+						<!-- <li><a href ='#link_header'>HOME</a></li> -->
 						<li><a href="#link_top_five">REVENUE</a></li>
 						<li><a href="#link_total_amount">CHANGE</a></li>
 						<li><a href="#link_trend_report">TREND</a></li>
 					</ul>
-				</div>
+				<!-- </div> -->
+				</header>
 				<div class="intro_title">
 					<h1>서울 상권 트렌드 2021</h1>
 				</div>
@@ -136,11 +130,11 @@
 					<div class="rank_box">
 						<h3>매출 증감률 상위 업종</h3>
 						<section class="ranking">
-							<header>
+							<div class="ranking_header">
 								<span class="c_1">순위</span>
 								<span class="c_2">업종</span>
 								<span class="c_3">증감율</span>
-							</header>
+							</div>
 							<dl class="first">
 								<dt class="c_1">1</dt>
 								<dd class="c_2">{{sales_top[0]['서비스_업종_코드_명']}}</dd>
@@ -175,12 +169,11 @@
 					<div class="rank_box">
 						<h3>매출 증감률 하위 업종</h3>
 						<section class="ranking">
-							<header>
+							<div class="ranking_header">
 								<span class="c_1">순위</span>
 								<span class="c_2">업종</span>
 								<span class="c_3">증감율</span>
-							</header>
-
+							</div>
 							<dl class="first">
 								<dt class="c_1">1</dt>
 								<dd class="c_2">{{sales_low[0]['서비스_업종_코드_명']}}</dd>
@@ -402,17 +395,13 @@
 						</script>
 					</div>
 
-					<button class="side_btn">
+					<button class="btn_side">
 						<img src="../static/image/menu_icon.png">
 					</button>
-
 				</div>
-
 			</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="../static/js/main.js"></script>
-		
-	
 	</body>
 </html>

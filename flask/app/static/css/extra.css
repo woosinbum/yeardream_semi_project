@@ -25,15 +25,80 @@ header {
     background-color:rgba(17, 17, 17, 0.85) !important;
 }
 
-.btn_main {
-    cursor: pointer;
-    width: 40px;
-    margin-left: 15px;
+.header_title h1 {
+    margin-left: 20px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.btn_menu {
+    margin-left: 5px;
+    min-width:61px;
+    width:40px;
+    height: 61px;
+    z-index: 999;
+    border: 0;
+    outline: 0;
     background-color: transparent;
 }
 
+.btn_menu img, .btn_close img {
+    width: 40px;
+    height: 40px;
+}
+
+.btn_close {
+    position: fixed;
+    left: 8px;
+    top: 15px;
+    min-width: 59px;
+    width: 55px;
+    height: 55px;
+    z-index: 999;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding-left: 120px;
+    z-index: 1000;
+    background: rgba(17, 17, 17, 0.85);
+}
+
+.inner_nav { 
+    display: inline-block;
+}
+
+.main_menu {
+   position: relative;
+   margin-top:22px;
+   display:inline-block; 
+}
+
+.main_menu > li {
+    display: flex;
+}
+
+.main_menu > li > a {
+    display: inline-block;
+    line-height: 64px;
+    font-size: 40px;
+    font-weight: 400;
+    font-family: "BM Hanna", sans-serif;
+    margin-bottom: 5px;
+    letter-spacing: -0.038em;
+    color:#ffffff;
+}
+
 header nav {
-    width: calc(100% - 40px);
+    width: calc(100% - 230px);
 }
 
 header nav ul {
@@ -62,18 +127,11 @@ section#search {
     text-align: center;
 }
 
-/* .search_box {
-    width: 500px;
-    height: 250px;
-    margin: 30px auto;
-    text-align: center;
-} */
-
 #detail_commercial_area {
     position: relative;
-    width: 200px;
+    width: 190px;
     padding: 20px;
-    margin-left: 10px;
+    margin-left: 15px;
     list-style-type: none;
     background-color: white;
     overflow: auto;
@@ -85,11 +143,13 @@ section#search {
 .add_li {
     background-color: white;
     line-height: 35px;
+    font-size: 15px;
 }
 
 #commercial_area {
     background-color: white;
     border: 1px solid;
+    width: 135px;
     height: 35px;
     padding: .3em .5em;
     margin-right: 10px;
@@ -130,7 +190,20 @@ section h2 {
 section p {
     font-size: 15px;
     line-height: 24px;
-    color: #555555ce;
+    color: hsla(0, 0%, 33%, 0.808);
+}
+
+.title > h2 > b {
+    height: 38px;
+    margin-right: 10px;
+    padding: 0 15px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 38px;
+    background-color: #1a7cff;
+    border-radius: 19px;
+    display: inline-block;
 }
 
 /* .data_box { */

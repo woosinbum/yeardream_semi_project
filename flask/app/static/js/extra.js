@@ -5,10 +5,6 @@ $(function() {
     $("#franchise").css("height", "150px");
     $("#real_estate").css("height", "150px");
 
-    $(".btn_main").click(function() {
-        location.href="/";
-    });
-
     $("#commercial_area").keyup(function() {
         if($("#commercial_area").val() != "")
             detail_area_list();
@@ -382,4 +378,8 @@ function get_extra_datas($commercial_area, $upjong) {
             }
         }
     })
+}
+
+function modal(x) {
+    $("#modal_on").css("display", x);
 }
