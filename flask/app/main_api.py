@@ -15,6 +15,7 @@ day_rate = db.get_collection('sales_rate_day')
 market_col = db.get_collection('commercial_area')
 average_sale_ratio = db.get_collection('sales_info_sales')
 business_ratio = db.get_collection('sales_info_business_ratio_2021')
+service_col = db.get_collection('sales_info_detail')
 #트렌드데이터 생성함수
 def make_label_data(list_data,col):
     lab=[]
@@ -64,7 +65,7 @@ def main_page():
     store_data[0].pop(0)
     store_data[1].pop(0)
     revenue_data=[]
-    make_data(revenue_data,'기준_년_코드','연매출평균증감',average_sale_ratio)
+    make_data(revenue_data,'기준_년_코드','연매출평균',average_sale_ratio)
     revenue_data[0].pop(0)
     revenue_data[1].pop(0)
 
@@ -80,7 +81,7 @@ def main_page():
 
 @main.route("/market-name",methods=['POST'])
 def market_name():
-    service_code = request.form.get("code")
+    service_code = request.form.get("market")
     print(service_code)
     
     return service_code
@@ -88,18 +89,19 @@ def market_name():
 
 @main.route("/market-name/list", methods=['POST'])
 def factor_bring_data():
-    value = request.form.get("code")
-
-    query = {"상권_코드": int(value)}        
+    service = request.form.get("service")
+    market = request.form.get("market")
+    query = {"상권_코드": int(market)}       
+    query2 = {"서비스_업종_코드":service}
     projection = {'_id':False}
     
     gender_data= list(gender_rate.find(query,projection))
     age_data = list(age_rate.find(query,projection))
     
     day_data = list(day_rate.find(query,projection))
+    service_data = list(service_col.find(query,query2,projection))
     
-    
-    data = [gender_data,age_data,day_data]
+    data = [gender_data,age_data,day_data,service_data]
 
     # data.append(gender_data)
     # data.append(age_data)

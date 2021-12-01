@@ -37,7 +37,7 @@ function make_pie(input) {
             plugins: {
                 title: {
                     display: true,
-                    text: '남녀 비율',
+                    text: '남녀 매출 비중 (단위:%)',
                     fontsize: 10,
                 },
                 legend :{
@@ -93,7 +93,7 @@ function make_age(input) {
             plugins: {
                 title: {
                     display: true,
-                    text: '연령별 매출 비중',
+                    text: '연령별 매출 비중 (단위:%)',
                     fontsize: 10,
                 },
                 legend: {
@@ -156,7 +156,7 @@ function make_bar(input) {
             plugins: {
                 title: {
                     display:true,
-                    text:"일별 매출 비중",
+                    text:"일별 매출 비중 (단위:%)",
                     fontSize:10
                 },
                 legend :{
@@ -174,7 +174,65 @@ function make_bar(input) {
         }
     })
 }
-
+//fourth
+function make_service(input) {
+    // var sales = document.getElementById('day_ratio').getContext('2d');
+    let service = $("#service_sale");
+    let serviceChart = new Chart(service, {
+        type: 'bar',
+        data: {
+            labels: ['월','화','수','목','금','토','일'], 
+            datasets:[{
+                data: input,
+                backgroundColor:[
+                    '#f3722c',
+                    '#f8961e',
+                    '#f9c74f',
+                    '#90be6d',
+                    '#43aa8b',
+                    '#577590', 
+                    '#f94144'
+                ],
+                borderWidth: 1,
+                borderColor: '#f0f0f0',
+                hoverBorderWidth: 4,    
+            }]
+        },
+        options: {
+            responsive: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: false,
+                    }
+                },
+                y: {
+                    grid: {
+                        display:false
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display:true,
+                    text:"일별 매출 비중 (단위:%)",
+                    fontSize:10
+                },
+                legend :{
+                    display: false,
+                    position:'top',
+                },
+                tooltips: {
+                    enabled: true,
+                },
+                layout: {
+                    top:10,
+                    bottom: 10
+                }
+            }
+        }
+    })
+}
 // market_name
 function market_code(value) {
     $.ajax({
@@ -212,10 +270,12 @@ function resetCanvas() {
     $('#gender_ratio').remove();
     $('#age_ratio').remove();
     $('#day_ratio').remove();
+    $('#service_sale').remove();
 
     $('#first').append('<canvas id="gender_ratio" width="400" height="250"></canvas>');
     $('#second').append('<canvas id="age_ratio" width="400" height="250"></canvas>');
     $('#third').append('<canvas id="day_ratio" width="400" height="250"></canvas>');
+    $('#fourth').append('<canvas id="service_sale" width="400" height="250"></canvas>');
 }
 
 function get_service_list(value) {
@@ -231,6 +291,15 @@ function get_service_list(value) {
         result[1][value]['연령대_60_이상_매출_비율']
     ]);
     make_bar([
+        result[2][value]['월요일_매출_비율'],
+        result[2][value]['화요일_매출_비율'],
+        result[2][value]['수요일_매출_비율'],
+        result[2][value]['목요일_매출_비율'],
+        result[2][value]['금요일_매출_비율'],
+        result[2][value]['토요일_매출_비율'],
+        result[2][value]['일요일_매출_비율']
+    ]);
+    make_service([
         result[2][value]['월요일_매출_비율'],
         result[2][value]['화요일_매출_비율'],
         result[2][value]['수요일_매출_비율'],

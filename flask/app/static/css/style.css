@@ -36,6 +36,7 @@ header {
     border: 0;
     outline: 0;
     background-color: transparent;
+    cursor:pointer;
 }
 
 .btn_menu img, .btn_close img {
@@ -54,6 +55,7 @@ header {
     border: 0;
     outline: 0;
     background-color: transparent;
+    cursor:pointer;
 }
 
 .modal {
@@ -93,9 +95,11 @@ header {
     color:#ffffff;
 }
 .nav {
+    margin-left: 75%;
     display: flex;
     justify-content: flex-end;
     line-height: 86px;
+    
     
 }
 .nav > li {
@@ -184,6 +188,9 @@ header {
     margin-top: 25px;
     margin-left: 45px;
     text-align: center;
+}
+.exp > h3 {
+    margin-bottom:10px;
 }
 
 .report_rank {
@@ -342,13 +349,13 @@ header {
     display: none;
 }
 
-#side_bar > div #first, #second, #third {
+#side_bar > div #first, #second, #third, #fourth {
 	display: block;
 	width: 500px;
 	height: 260px;
 }
 
-#first, #second, #third {
+#first, #second, #third, #fourth{
     display: block;
     margin: 0 auto;
     width: 400px;
@@ -403,6 +410,7 @@ header {
     margin-top: 50px;
     border: none;
     background:rgba(17, 17, 17, 0.85)
+    cursor:pointer;
 }
 
 .btn_side > img {
@@ -412,6 +420,7 @@ header {
 
 .btn_side_close {
     border: none;
+    cursor:pointer;
 }
 
 .btn_side_close > img {
