@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask
 from app.main_api import main
 from app.factor_analysis import factor
 from app.extra_api import extra
