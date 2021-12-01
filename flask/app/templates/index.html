@@ -11,6 +11,48 @@
 	</head>
 	<body>
 		<div class="wrap">
+			<section id="side_bar"> 
+			<!-- <section id="side_bar_wrap">  -->
+				<!-- <div class='side_bar'> -->
+				<div id="market_header">
+					<button class="side_btn_close">
+						<img src="../static/image/close_icon.png">
+					</button>
+				</div>
+					<div class="side_bar_header">
+						<label for='market_name'>시장검색:</label>
+						<select name="market_name"id="market" onchange="market_code(this.value)">
+							<option>선택</option>
+							{%for i in market%}
+								<option value="{{i.get('상권_코드')}}">{{i.get('상권_코드_명')}}</option>
+							{%endfor%}
+							<!-- <option value="test">목록</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option> -->
+						</select>
+						<label for="ctg">업종검색:</label>
+						<select name="ctg_name" id="service" onchange="get_service_list(this.value)">
+							<option value="test">목록</option>
+							<option value="1"></option>
+							<option value="2"></option>
+							<option value="3"></option>
+						</select>
+					</div>
+				<div id="first">
+
+					<canvas id="gender_ratio" width="400" height="250"></canvas>
+				</div>
+				<div id="second">
+					
+					<canvas id="age_ratio" width="400"	height="250"></canvas>
+				</div>
+				<div id="third">
+					<canvas id='day_ratio'width='400' height="250"></canvas>
+				</div>
+
+				<!-- </div> -->
+			</section>
 
 			<div class="intro_bg">
 				<div class="header" id="link_header">
@@ -21,7 +63,7 @@
 						<nav class="inner_nav">
 							<ul class="main_menu">
 								<li><a href="/factor">요인분석</a></li>
-								<li><a href="#">부가서비스</a></li>
+								<li><a href="/extra">부가서비스</a></li>
 								
 							</ul>
 						</nav>
@@ -29,44 +71,6 @@
 							<img src="../static/image/close_icon.png">
 						</button>
 					</div>
-					<div class='side_bar'>
-						<div id="market_header">
-							<button class="side_btn_close">
-								<img src="../static/image/close_icon.png">
-							</button>
-							<label for='market_name'>시장검색:</label>
-							<select name="market_name"id="market" onchange="market_code(this.value)">
-								<option>선택</option>
-								{%for i in market%}
-									<option value="{{i.get('상권_코드')}}">{{i.get('상권_코드_명')}}</option>
-								{%endfor%}
-								<!-- <option value="test">목록</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option> -->
-							</select>
-							<label for="ctg">업종검색:</label>
-							<select name="ctg_name" id="service" onchange="get_service_list(this.value)">
-								<option value="test">목록</option>
-								<option value="1"></option>
-								<option value="2"></option>
-								<option value="3"></option>
-							</select>
-						</div>
-						<div id="first">
-
-							<canvas id="gender_ratio" width="400" height="250"></canvas>
-						</div>
-						<div id="second">
-							
-							<canvas id="age_ratio" width="400"	height="250"></canvas>
-						</div>
-						<div id="third">
-							<canvas id='day_ratio'width='400' height="250"></canvas>
-						</div>
-
-					</div>
-
 
 					<ul class="nav">
 						<li><a href ='#link_header'>HOME</a></li>
@@ -96,19 +100,19 @@
 				<li>
 					<div>
 						<div><b>월별 최고매출 업종</b></div>
-						<div>{{ data.get('highest_type') }}</div>
+						<div>수산물 판매</div>
 					</div>
 				</li>
 				<li>
 					<div>
 						<div><b>최고 매출상승률 상권</b></div>
-						<div>{{ data.get('highest_ratio_place') }}</div>
+						<div>용산 전자 상가</div>
 					</div>
 				</li>
 				<li>
 					<div>
 						<div><b>최고 매출상승률 업종</b></div>
-						<div>{{ data.get('highest_ratio_type') }}</div>
+						<div>조명용품</div>
 					</div>
 				</li>
 				<li>

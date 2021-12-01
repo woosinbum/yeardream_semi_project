@@ -478,9 +478,9 @@ function get_service_list(value) {
 
 document.querySelector('.side_btn').addEventListener('click',function(){
     
-   document.querySelector('.side_bar').style.transform = 'translateX(193%)'; 
+   document.querySelector('#side_bar').style.display = 'block'; 
 })
 
 document.querySelector('.side_btn_close').addEventListener('click',function(){
-    document.querySelector('.side_bar').style.transform = 'translateX(1730px)'; 
+    document.querySelector('#side_bar').style.display = 'none'; 
  })

@@ -1,7 +1,11 @@
 from flask import Flask,render_template
-from app.main_api import main
-from app.factor_analysis import factor
-from app.extra_api import extra
+# from app.main_api import main
+# from app.factor_analysis import factor
+# from app.extra_api import extra
+
+from main_api import main
+from factor_analysis import factor
+from extra_api import extra
 
 app = Flask(__name__)
 

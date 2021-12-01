@@ -46,29 +46,7 @@ def make_data(list_data,column,column2,col):
 
 @main.route("/",methods=['GET'])
 def main_page():
-    data = \
-        { 
-        'highest_place':'상권',
-        'highest_type': '수산물 판매',
-        'highest_ratio_place':'상권',
-        'highest_ratio_type':'조명용품',
-        'sales': '20년 평균 매출',
-        'last_sales': '20년 전 평균 매출',
-        'closed_ratio':'20년 폐업률',
-        'last_closed_ratio':'20년 전 폐업률',
-        'high_rank':[
-            {'type':'조명용품','ratio':'128.3%'},
-            {'type':'의료기기','ratio':'111.9%'},
-            {'type':'청과상','ratio':'82.7%'},
-            {'type':'육류판매','ratio':'70.4%'},
-            {'type':'가전제품','ratio':'63.4%'}],
-        'low_rank':[
-            {'type':'고시원','ratio':'-62.3%'},
-            {'type':'노래방','ratio':'-39.0%'},
-            {'type':'여관','ratio':'-35.3%'},
-            {'type':'패스트푸드점','ratio':'-30.2%'},
-            {'type':'네일숍','ratio':'-25.5%'}],
-        }
+  
     projection = {'_id':False}
 
     sales_top5 = list(sales_info.find({'기준_년_코드':2020},projection).sort('전년도비_매출_증감률',-1).limit(5))
@@ -93,7 +71,6 @@ def main_page():
     return render_template('index.html',
                             sales_top= sales_top5,
                             sales_low= sales_low5, 
-                            data=data,
                             market=market_lab,
                             trend=trend_data,
                             store=store_data,

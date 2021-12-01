@@ -94,7 +94,7 @@ h1 {
     display: flex;
     justify-content: flex-end;
     line-height: 86px;
-    width:calc(1290px - 50px);
+    width:
 }
 .nav > li{
     margin: 0 41px;
@@ -321,25 +321,33 @@ h1 {
     margin:auto;
 }
 /* 그래프 구현 부분 */
-
-.side_bar {
-    display:blcok;
-    width:30%;
-    height:100%;
+/* #side_bar_wrap {
+    display:none;
+    background:transparent;
+    position:fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    z-index:1;
+} */
+#side_bar {
+    display:none;
+    width:600px;
     background:rgba(17, 17, 17, 0.85); 
     position:fixed;
-    left: 0;
+    right:0;
+    bottom:0;
     top:0;
-    
-    bottom: 0;
-    padding-left: 120px;
     z-index: 1;
+    overflow-y:auto;
     /* text-align: center; */
-    transform: translateX(1730px);
-    transition: transform 0.5s;
-}   
 
-.side_bar > div #first,#second,#third{
+}   
+#side_bar::-webkit-scrollbar{
+    display:none;
+}
+#side_bar > div #first,#second,#third{
 	
 	display: block;
 	width: 500px;
@@ -353,12 +361,20 @@ h1 {
     width: 400px;
     height:240px;
     margin-bottom: 20px;
+    margin-right:100px;
     padding-bottom: 21px;
     margin-top: 50px;
-    margin-left: -80px;
+    /* margin-left: -80px; */
     background-color: #fff;
-    box-shadow:0 4px 16px 0 rgba(89, 87, 238, 0.986);
+    box-shadow:0 4px 16px 0 #1a7cff;
 	border-radius: 5%;
+    
+}
+.side_bar_header {
+    
+    height:30px;
+    margin-left:17%;
+    
 }
 
 #service {
@@ -377,10 +393,10 @@ h1 {
 	height: 20px;
 }
 
-#market_header > label {
+.side_bar_header > label {
     
     margin-top:40px;
-    color: white;;
+    color: white;
     
 }
 #market_header {
