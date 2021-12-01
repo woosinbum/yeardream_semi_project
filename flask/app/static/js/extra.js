@@ -1,3 +1,47 @@
+$(function() {
+    $("#arbeit_chart").css("display", "none");
+    $("#franchise_chart").css("display", "none");
+    $("#arbeit").css("height", "150px");
+    $("#franchise").css("height", "150px");
+    $("#real_estate").css("height", "150px");
+
+    $("#commercial_area").keyup(function() {
+        if($("#commercial_area").val() != "")
+            detail_area_list();
+        
+        if($("#commercial_area").val() == "" && $("#detail_commercial_area").length > 0) {
+            $("#detail_commercial_area li").remove();
+            $(".area_list").css("display", "none");
+        }
+    });
+    
+    $("#detail_commercial_area").on("click", "li", function() {
+        $("#commercial_area").val($(this).text());
+    
+        upjong_list($(this).text());
+    });
+    
+    $(".btn_search").click(function() {
+        if($("#commercial_area").val() == "") {
+            alert("상권명을 입력하세요.");
+    
+            $("#commercial_area").focus();
+        }
+    
+        if($("#upjong").val() == "") {
+            alert("업종을 선택하세요.");
+        }
+
+        $(".area_list").css("display", "none");
+
+        $commercial_area = $("#commercial_area").val();
+        $upjong = $("#upjong").val();
+    
+        // 데이터 가져오기
+        get_extra_datas($commercial_area, $upjong);
+    });
+});
+
 function draw_day(data) {
     let canvas_day = $("#canvas_day")
     let day_chart = new Chart(canvas_day, {
@@ -275,18 +319,25 @@ function get_extra_datas($commercial_area, $upjong) {
             let max_day_index = days.indexOf(max_day);
             let max_time_index = times.indexOf(max_time);
 
-            temp_str = "<p style='margin: 20px auto; text-align:center;'>";
-            temp_str += result[0]["상권_코드_명"]+" 상권의 "+result[0]["서비스_업종_코드_명"]+" 업종은 ";
+            temp_str = "<p class='p_result'>";
+            temp_str += result[0]["상권_코드_명"]+" 상권의 "+result[0]["서비스_업종_코드_명"]+" 업종은<br>";
             temp_str += "평균적으로 <b>"+days_dict[max_day_index]+"</b>과 <b>"+times_dict[max_time_index]+"</b>에 ";
-            temp_str += "손님이 가장 많습니다.</p>"
+            temp_str += "손님이 가장 많습니다.</p>";
 
-            $("#arbeit p").remove();
+            $("#arbeit_chart").css("display", "block");
+            $("#franchise_chart").css("display", "block");
+            $("#arbeit").css("height", "600px");
+            $("#real_estate").css("height", "550px");
+
+            $("#arbeit .p_result").remove();
             $("#arbeit").append(temp_str);
 
-            $("#franchise p").remove();
+            $("#franchise .p_result").remove();
 
             if(Array.isArray(result[3])) {
-                franchise_str = "<p style='margin: 20px 0'>";
+                $("#franchise").css("height", "550px");
+
+                franchise_str = "<p class='p_result'>";
                 franchise_str += result[0]["상권_코드_명"]+" 상권에서 매출 증감률이 <b>";
                 franchise_str += result[2]["전년도비_매출_증감률"]+"%</b>로 가장 높은 <b>";
                 franchise_str += result[2]["서비스_업종_코드_명"]+"</b>의 프랜차이즈 정보</p>";
@@ -296,7 +347,10 @@ function get_extra_datas($commercial_area, $upjong) {
                 draw_stability(result[3][0]);
                 draw_profitability(result[3][1]);
             } else {
-                franchise_str = "<p style='margin: 30px; text-align: center'>";
+                $("#franchise_chart").css("display", "none");
+                $("#franchise").css("height", "270px");
+
+                franchise_str = "<p class='p_result'>";
                 franchise_str += result[0]["상권_코드_명"]+" 상권에서 매출 증감률이 <b>";
                 franchise_str += result[2]["전년도비_매출_증감률"]+"%</b>로 가장 높은 <b>";
                 franchise_str += result[2]["서비스_업종_코드_명"]+"</b> 업종과 관련된 프랜차이즈가 없습니다.";
@@ -308,6 +362,7 @@ function get_extra_datas($commercial_area, $upjong) {
             }
 
             // 부동산
+            $("#real_eatate").css("height", "auto");
             $("#real_estate h4").remove();
             $("#item_list").before("<h4 style='margin: 20px'>"+result[4][0]["소재지"]+"</h4>");
 
@@ -327,36 +382,6 @@ function get_extra_datas($commercial_area, $upjong) {
     })
 }
 
-$("#commercial_area").keyup(function() {
-    if($("#commercial_area").val() != "")
-        detail_area_list();
-    
-    if($("#commercial_area").val() == "" && $("#detail_commercial_area").length > 0) {
-        $("#detail_commercial_area li").remove();
-        $(".area_list").css("display", "none");
-    }
-})
-
-$("#detail_commercial_area").on("click", "li", function() {
-    $("#commercial_area").val($(this).text());
-
-    upjong_list($(this).text());
-})
-
-$(".search_btn").click(function() {
-    if($("#commercial_area").val() == "") {
-        alert("상권명을 입력하세요.");
-
-        $("#commercial_area").focus();
-    }
-
-    if($("#upjong").val() == "") {
-        alert("업종을 선택하세요.");
-    }
-
-    $commercial_area = $("#commercial_area").val();
-    $upjong = $("#upjong").val();
-
-    // 데이터 가져오기
-    get_extra_datas($commercial_area, $upjong);
-})
+function modal(x) {
+    $("#modal_on").css("display", x);
+}

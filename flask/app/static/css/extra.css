@@ -1,47 +1,160 @@
 * {
     margin: 0;
-	background: #f0f0f0;
     font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: #f0f0f0;
+}
+
+a {
+    text-decoration: none;
 }
 
 .wrap {
     width: 100%;
+    min-width: 800px;
 }
 
-a .main_btn {
-    width: 30px;
-    margin-left: 15px;
-    margin-top: 15px;
+header {
+    display: flex;
+    width: 100%;
+    height: 86px;
+    align-items: center;
+    background-color:rgba(17, 17, 17, 0.85) !important;
 }
 
-.search_box {
+header h1 b {
+    margin-left: 20px;
+	font-size: 34px;
+    color: #fff;
+}
+
+.btn_menu {
+    margin-left: 5px;
+    min-width:61px;
+    width:40px;
+    height: 61px;
+    z-index: 999;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+}
+
+.btn_menu img, .btn_close img {
+    width: 40px;
+    height: 40px;
+}
+
+.btn_close {
+    position: fixed;
+    left: 8px;
+    top: 15px;
+    min-width: 59px;
+    width: 55px;
+    height: 55px;
+    z-index: 999;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding-left: 120px;
+    z-index: 999;
+    background: rgba(17, 17, 17, 0.85);
+}
+
+header nav {
+    width: calc(100% - 240px);
+    position: absolute;
+    right: 0;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header nav li {
+    list-style-type: none;
+    margin-right: 41px;
+}
+
+header nav li a {
+    color:floralwhite;
+}
+
+.inner_nav { 
+    display: inline-block;
+    position: unset;
+}
+
+.main_menu {
+   position: relative;
+   margin-top: 22px;
+   padding: 0;
+   display: inline-block; 
+}
+
+.main_menu > li {
+    display: flex;
+}
+
+.main_menu > li > a {
+    display: inline-block;
+    line-height: 64px;
+    font-size: 40px;
+    font-weight: 400;
+    font-family: "BM Hanna", sans-serif;
+    margin-bottom: 5px;
+    letter-spacing: -0.038em;
+    color:#ffffff;
+}
+
+section {
+    width: 700px;
+    height: auto;
+    margin: 50px auto 0;
+}
+
+section#search {
     width: 500px;
-    height: 250px;
-    margin: 10px auto;
+    height: 100px;
     text-align: center;
 }
 
 #detail_commercial_area {
-    width: 200px;
-    /* height: 200px; */
+    position: relative;
+    width: 190px;
     padding: 20px;
+    margin-left: 15px;
     list-style-type: none;
     background-color: white;
-    /* overflow-y: auto; */
     overflow: auto;
     height: auto;
     max-height: 150px;
+    z-index: 999;
 }
 
 .add_li {
     background-color: white;
-    line-height: 30px;
+    line-height: 35px;
+    font-size: 15px;
 }
 
 #commercial_area {
     background-color: white;
     border: 1px solid;
-    height: 30px;
+    width: 135px;
+    height: 35px;
     padding: .3em .5em;
     margin-right: 10px;
 }
@@ -54,13 +167,12 @@ a .main_btn {
     padding: .3em .5em;
 }
 
-.search_btn {
+.btn_search {
     width: 50px;
     height: 35px;
     border: none;
     border-radius: 5px;
-    /* background-color: #008CBA; */
-    background-color: #555555;
+    background-color: #1a7cff;
     color: white;
     margin: 0 10px;
 }
@@ -69,32 +181,61 @@ a .main_btn {
     display: none;
 }
 
-.data_box {
-    width: 700px;
-    height: auto;
-    margin: 0 auto;
+section .title {
+    width: 500px;
+    text-align: center;
+    margin: 0 auto 30px;
 }
 
+section h2 {
+    margin-bottom: 15px;
+}
+
+section p {
+    font-size: 15px;
+    line-height: 24px;
+    color: hsla(0, 0%, 33%, 0.808);
+}
+
+.title > h2 > b {
+    height: 38px;
+    margin-right: 10px;
+    padding: 0 15px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 38px;
+    background-color: #1a7cff;
+    border-radius: 19px;
+    display: inline-block;
+}
+
+.title a {
+    color: black;
+}
+
+/* .data_box { */
 #arbeit, #franchise, #real_estate {
     width: 700px;
-    height: 500px;
+    /* height: 500px; */
 }
 
 #arbeit_chart, #franchise_chart {
     width: 700px;
-    height: 300px;
+    height: 330px;
+    background-color: white;
 }
 
 #day, #time, #stability, #profitability {
     width: 350px;
-    height: 350px;
+    height: 330px;
     /* margin: 10px 20px; */
     float: left;
 }
 
 #canvas_day, #canvas_time, #canvas_stability, #canvas_profitability {
     margin: 10px auto;
-    background-color: white;
+    /* background-color: white; */
 }
 
 #item_list {
@@ -107,6 +248,7 @@ a .main_btn {
 
 #item_list li p {
     margin: 5px 0;
+    color: black;
 }
 
 .li_title {
@@ -118,4 +260,10 @@ a .main_btn {
 .li_content {
     margin-top: 5px;
     margin-right: 5px; 
+}
+
+.p_result {
+    margin: 40px auto; 
+    text-align:center;
+    color: black;
 }

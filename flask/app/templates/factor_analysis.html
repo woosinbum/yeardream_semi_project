@@ -10,261 +10,261 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>		
 	</head> 
 	<body>
-		<div class="container">
-			<div class="page">
-				<div class="header">
-					<button onclick="modal('block')" class="btn_menu">
-						<img src="../static/image/menu_icon.png">
+		<div class="page">
+			<div class="header">
+				<button onclick="modal('block')" class="btn_menu">
+					<img src="../static/image/menu_icon.png">
+				</button>
+				<div class="modal" id="modal_on">
+					<nav class="inner_nav">
+						<ul class="main_menu">
+							<li><a href="/">메인</a></li>
+							<li><a href="/extra">부가서비스</a></li>
+							
+						</ul>
+					</nav>
+					<button onclick='modal("none")' class="btn_close" >
+						<img src="../static/image/close_icon.png">
 					</button>
-					<div class="modal" id="modal_on">
-						<nav class="inner_nav">
-							<ul class="main_menu">
-								<li><a href="/">메인</a></li>
-								<li><a href="#">부가서비스</a></li>
-								
-							</ul>
-						</nav>
-						<button onclick='modal("none")' class="btn_close" >
-							<img src="../static/image/close_icon.png">
-						</button>
-					</div>
-					<h1>
-						<b>매출 요인분석</b>
-					</h1>
 				</div>
-				<div class="map">
-					<h2>서울시 주요 상권 지도</h2>
-					<div class="map_range">
-						
-						<iframe id="html-contents" src="/factor/map"></iframe>        
-						<div class="map_explain">
-							<h1>
-								<b>TOP10%</b>
-								서울시 주요 상권
-							</h1>
-							<p>서울시에서 매출이 가장 높은 상권에는 어떤 이유가 있을까?</p>
-							<p>집객시설, 유동인구, 지출목록, 직장인구 데이터를 바탕으로</p>
-							<p>상관관계를 분석해 보았습니다. </p>
-							<p>수치가0에 가까울수록 상관이 없으며</p>
-							<p>1과 -1에 가까워 질수록 양,음의 관계를 나타냅니다</p>
+				<h1>
+					<b>매출 요인분석</b>
+				</h1>
+			</div>
+			<div class="map">
+				
+				<div class="map_range">
+					<section id="map_section">
+						<h2>서울시 주요 상권 지도</h2>
+						<iframe id="html-contents" src="/factor/map"></iframe>       
+					</section> 
+					<div class="map_explain">
+						<h1>
+							<b>TOP10%</b>
+							서울시 주요 상권
+						</h1>
+						<h3>서울시에서 매출이 높은 상위 10% 상권에는 어떤 이유가 있을까?</h3>
+						<p>매출과 집객시설, 유동인구, 지출목록, 직장인구 데이터를 바탕으로</p>
+						<p>상관관계를 분석해 보았습니다. </p>
+						<p>수치가0에 가까울수록 상관 관계가 적으며</p>
+						<p>1과 -1에 가까워 질수록 양,음의 관계를 나타냅니다</p>
 
-						</div>
 					</div>
-					<div class="graph_range">
-						<div class="graph_box">
-							<canvas id="corr_1" width="600" height="350"></canvas>
-							<script>
-								const job = document.getElementById('corr_1').getContext('2d');
-								const jobChart = new Chart(job, {
-									type: 'bar',
-									data: {
-										labels: {{job_data[0] | tojson}},
-										datasets: [{
-											label: '상관관계',
-											data: {{job_data[1] | tojson}},
-											backgroundColor: [
-												'#4682B4'
-											],
-											borderColor: [
-												'rgba(255, 99, 132, 1)'
-											],
-											borderWidth: 1,
-											borderColor: '#f0f0f0',
-											hoverBorderWidth:4,
-										}]
-									},
-									options: {
-										indexAxis:'y',
-										responsive: false,
-										scales: {
-											x:{
-												grid:{
-													display:false,
-												}
-											},
-											y: {
-												grid:{
-													display:false,
-												},
-												beginAtZero: true
+				</div>
+				<div class="graph_range">
+					<div class="graph_box">
+						<canvas id="corr_1" width="600" height="350"></canvas>
+						<script>
+							const job = document.getElementById('corr_1').getContext('2d');
+							const jobChart = new Chart(job, {
+								type: 'bar',
+								data: {
+									labels: {{job_data[0] | tojson}},
+									datasets: [{
+										label: '상관관계',
+										data: {{job_data[1] | tojson}},
+										backgroundColor: [
+											'#1a7cff'
+										],
+										borderColor: [
+											'rgba(255, 99, 132, 1)'
+										],
+										borderWidth: 1,
+										borderColor: '#f0f0f0',
+										hoverBorderWidth:4,
+									}]
+								},
+								options: {
+									indexAxis:'y',
+									responsive: false,
+									scales: {
+										x:{
+											grid:{
+												display:false,
 											}
 										},
-										plugins: {
+										y: {
+											grid:{
+												display:false,
+											},
+											beginAtZero: true
+										}
+									},
+									plugins: {
+									title:{
+										display:true,
+										text:"직장인구 유형별 상관관계",
+										fontSize:10
+									},
+									legend:{
+										display:false,
+									}
+								}
+								}
+								
+							})
+							</script>
+					</div>
+					<div class="graph_box">
+						<canvas id="corr_2" width="600" height="350"></canvas>
+						<script>
+							const facil = document.getElementById('corr_2').getContext('2d');
+							const facilChart = new Chart(facil, {
+								type: 'bar',
+								data: {
+									labels: {{fac_data[0] | tojson}},
+									datasets: [{
+										label: '상관계수',
+										data: {{fac_data[1] | tojson}},
+										backgroundColor: [
+											'#1a7cff'
+										],
+										borderColor: [
+											'rgba(255, 99, 132, 1)'
+										],
+										borderWidth: 1,
+										borderColor: '#f0f0f0',
+										hoverBorderWidth:4,
+									}]
+								},
+								options: {
+									indexAxis:'y',
+									responsive: false,
+									scales: {
+										x:{
+											grid:{
+												display:false,
+											}
+										},
+										y: {
+											grid:{
+												display:false,
+											},
+											beginAtZero: true
+										}
+									},
+									plugins: {
 										title:{
 											display:true,
-											text:"직장인구 유형별 상관관계",
+											text:"집객시설 상관관계",
 											fontSize:10
 										},
 										legend:{
-											display:false,
+											display:false
 										}
 									}
-									}
-									
-								})
-								</script>
-						</div>
-						<div class="graph_box">
-							<canvas id="corr_2" width="600" height="350"></canvas>
-							<script>
-								const facil = document.getElementById('corr_2').getContext('2d');
-								const facilChart = new Chart(facil, {
-									type: 'bar',
-									data: {
-										labels: {{fac_data[0] | tojson}},
-										datasets: [{
-											label: '상관계수',
-											data: {{fac_data[1] | tojson}},
-											backgroundColor: [
-												'#4682B4'
-											],
-											borderColor: [
-												'rgba(255, 99, 132, 1)'
-											],
-											borderWidth: 1,
-											borderColor: '#f0f0f0',
-											hoverBorderWidth:4,
-										}]
-									},
-									options: {
-										indexAxis:'y',
-										responsive: false,
-										scales: {
-											x:{
-												grid:{
-													display:false,
-												}
-											},
-											y: {
-												grid:{
-													display:false,
-												},
-												beginAtZero: true
-											}
-										},
-										plugins: {
-											title:{
-												display:true,
-												text:"집객시설 상관관계",
-												fontSize:10
-											},
-											legend:{
-												display:false
-											}
-										}
-									}
-								
-								});
-							</script>
-						</div>
+								}
+							
+							});
+						</script>
 					</div>
-					<div class="graph_range">
-						<div class="graph_box">
-							<canvas id="corr_3" width="600" height="350"></canvas>
-							<script>
-								const foot = document.getElementById('corr_3').getContext('2d');
-								const footChart = new Chart(foot, {
-									type: 'bar',
-									data: {
-										labels: {{foot_data[0] | tojson}},
-										datasets: [{
-											label: '상관관계',
-											data: {{foot_data[1] | tojson}},
-											backgroundColor: [
-												'#4682B4'
-											],
-											borderColor: [
-												'rgba(255, 99, 132, 1)'
-											],
-											borderWidth: 1,
-											borderColor: '#f0f0f0',
-											hoverBorderWidth:4,
-										}]
-									},
-									options: {
-										indexAxis:'y',
-										responsive: false,
-										scales: {
-											x:{
-												grid:{
-													display:false,
-												}
-											},
-											y: {
-												grid:{
-													display:false,
-												},
-												beginAtZero: true
+				</div>
+				<div class="graph_range">
+					<div class="graph_box">
+						<canvas id="corr_3" width="600" height="350"></canvas>
+						<script>
+							const foot = document.getElementById('corr_3').getContext('2d');
+							const footChart = new Chart(foot, {
+								type: 'bar',
+								data: {
+									labels: {{foot_data[0] | tojson}},
+									datasets: [{
+										label: '상관관계',
+										data: {{foot_data[1] | tojson}},
+										backgroundColor: [
+											'#1a7cff'
+										],
+										borderColor: [
+											'rgba(255, 99, 132, 1)'
+										],
+										borderWidth: 1,
+										borderColor: '#f0f0f0',
+										hoverBorderWidth:4,
+									}]
+								},
+								options: {
+									indexAxis:'y',
+									responsive: false,
+									scales: {
+										x:{
+											grid:{
+												display:false,
 											}
 										},
-										plugins: {
+										y: {
+											grid:{
+												display:false,
+											},
+											beginAtZero: true
+										}
+									},
+									plugins: {
+									title:{
+										display:true,
+										text:"유동인구 상관관계",
+										fontSize:10
+									},
+									legend:{
+										display:false,
+									}
+								}
+								}
+								
+							});
+						</script>
+					</div>
+					<div class="graph_box">
+						<canvas id="corr_4" width="600" height="350"></canvas>
+						<script>
+							const income = document.getElementById('corr_4').getContext('2d');
+							const incomeChart = new Chart(income, {
+								type: 'bar',
+								data: {
+									labels: {{income_data[0] | tojson}},
+									datasets: [{
+										label: '상관계수',
+										data: {{income_data[1] | tojson}},
+										backgroundColor: [
+											'#1a7cff'
+										],
+										borderColor: [
+											'rgba(255, 99, 132, 1)'
+										],
+										borderWidth: 1,
+										borderColor: '#f0f0f0',
+										hoverBorderWidth:4,
+									}]
+								},
+								options: {
+									indexAxis:'y',
+									responsive: false,
+									scales: {
+										x:{
+											grid:{
+												display:false,
+											}
+										},
+										y: {
+											grid:{
+												display:false,
+											},
+											beginAtZero: true
+										}
+									},
+									plugins: {
 										title:{
 											display:true,
-											text:"유동인구 상관관계",
+											text:"지출분야 상관관계",
 											fontSize:10
 										},
 										legend:{
-											display:false,
+											display:false
 										}
 									}
-									}
-									
-								});
-							</script>
-						</div>
-						<div class="graph_box">
-							<canvas id="corr_4" width="600" height="350"></canvas>
-							<script>
-								const income = document.getElementById('corr_4').getContext('2d');
-								const incomeChart = new Chart(income, {
-									type: 'bar',
-									data: {
-										labels: {{income_data[0] | tojson}},
-										datasets: [{
-											label: '상관계수',
-											data: {{income_data[1] | tojson}},
-											backgroundColor: [
-												'#4682B4'
-											],
-											borderColor: [
-												'rgba(255, 99, 132, 1)'
-											],
-											borderWidth: 1,
-											borderColor: '#f0f0f0',
-											hoverBorderWidth:4,
-										}]
-									},
-									options: {
-										indexAxis:'y',
-										responsive: false,
-										scales: {
-											x:{
-												grid:{
-													display:false,
-												}
-											},
-											y: {
-												grid:{
-													display:false,
-												},
-												beginAtZero: true
-											}
-										},
-										plugins: {
-											title:{
-												display:true,
-												text:"지출분야 상관관계",
-												fontSize:10
-											},
-											legend:{
-												display:false
-											}
-										}
-									}
-								
-								});
-							</script>
-						</div>
+								}
+							
+							});
+						</script>
 					</div>
 				</div>
 			</div>

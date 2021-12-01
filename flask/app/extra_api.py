@@ -1,4 +1,4 @@
-from flask import Blueprint, json, request, render_template, jsonify
+from flask import Blueprint, request, render_template, jsonify
 from pymongo import MongoClient
 
 extra = Blueprint("extra", __name__)
@@ -45,8 +45,6 @@ def extra_upjong_list():
 def extra_datas():
     name = request.form.get("name")
     upjong = request.form.get("upjong")
-
-    print(name, upjong)
 
     result = []
 

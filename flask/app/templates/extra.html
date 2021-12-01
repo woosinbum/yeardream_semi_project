@@ -3,70 +3,108 @@
         <meta charset="UTF-8">
         <title>프랜차이즈 분석</title>
         <link rel="stylesheet" type="text/css" href="../static/css/extra.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
     </head>
     <body>
         <div class="wrap">
-            <div class="header">
-                <a href="/main">
-                    <img src="../static/image/home_icon.png" class="main_btn">
-                </a>
-                <ul class="nav">
-                    <li><a href='#arbeit'>아르바이트</a></li> <!-- 아르바이트 -->
-                    <li><a href="#franchise">프랜차이즈</a></li> <!-- 프랜차이즈 -->
-                    <li><a href="#real_estate">부동산</a></li> <!-- 부동산 매물 -->
-                </ul>
-            </div>
-            <div class="search_box">
+            <header id="home">
+                <button class="btn_menu" onclick="modal('block')">
+                    <img src="../static/image/menu_icon.png">
+                </button>
+                <h1>
+                    <b>부가서비스</b>
+                </h1>
+                <div class="modal" id="modal_on">
+                    <nav class="inner_nav">
+                        <ul class="main_menu">
+                            <li><a href="/">메인</a></li>
+                            <li><a href="/factor">요인분석</a></li>
+                        </ul>
+                    </nav>
+                    <button class="btn_close"  onclick="modal('none')">
+                        <img src="../static/image/close_icon.png">
+                    </button>
+                </div>
+                <!-- <img src="../static/image/menu_icon.png" class="btn_main"> -->
+                <nav>
+                    <ul>
+                        <li><a href='#arbeit'>아르바이트</a></li>
+                        <li><a href="#franchise">프랜차이즈</a></li>
+                        <li><a href="#real_estate">부동산</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <section id="search">
+                <!-- <div class="search_box"> -->
                 <label>상권명: </label>
                 <input type="text" id="commercial_area" placeholder="예) 양화로1길">
                 <label>업종 선택: </label>
                 <select id="upjong">
                     <option value="" selected>업종</option>
                 </select>
-                <button class="search_btn">검색</button>
+                <button class="btn_search">검색</button>
                 <div class="area_list">
                     <ul id="detail_commercial_area">
 
                     </ul>
                 </div>
-                <!-- <select name="detail_commercial_area">
-                    <option value="choice" selected>선택</option>
-                </select> -->
-            </div>
-            <div class="data_box">
-                <div id="arbeit">
-                    <h2>아르바이트</h2>
-                    <div id="arbeit_chart">
-                        <div id="day">
-                            <canvas id="canvas_day"></canvas>
-                        </div>
-                        <div id="time">
-                            <canvas id="canvas_time"></canvas>
-                        </div>
+                <!-- </div> -->
+            </section>
+            <section id="arbeit">
+                <div class="title">
+                    <h2>
+                        <b>01</b>
+                        <a href='#home'>아르바이트</a>
+                    </h2>
+                    <p>
+                        선택한 상권과 업종의 평균적인 요일별, 시간대별 매출 차트를 통해<br>
+                        아르바이트를 고용하면 좋을 요일과 시간대 추천
+                    </p>
+                </div>
+                <div id="arbeit_chart">
+                    <div id="day">
+                        <canvas id="canvas_day"></canvas>
+                    </div>
+                    <div id="time">
+                        <canvas id="canvas_time"></canvas>
                     </div>
                 </div>
-                <div id="franchise">
-                    <h2>프랜차이즈</h2>
-                    <div id="franchise_chart">
-                        <div id="stability">
-                            <canvas id="canvas_stability"></canvas>
-                        </div>
-                        <div id="profitability">
-                            <canvas id="canvas_profitability"></canvas>
-                        </div>
+            </section>
+            <section id="franchise">
+                <div class="title">
+                    <h2>
+                        <b>02</b>
+                        <a href="#home">프랜차이즈</a>
+                    </h2>
+                    <p>
+                        선택한 상권에서 매출 증감량이 가장 높은 업종의 프랜차이즈 중에서<br>
+                        안정성과 수익성이 높은 프랜차이즈 정보
+                    </p>
+                </div>
+                <div id="franchise_chart">
+                    <div id="stability">
+                        <canvas id="canvas_stability"></canvas>
+                    </div>
+                    <div id="profitability">
+                        <canvas id="canvas_profitability"></canvas>
                     </div>
                 </div>
-                <div id="real_estate">
-                    <h2>부동산</h2>
-                    <div class="item_area">
-                        <ul id="item_list">
+            </section>
+            <section id="real_estate">
+                <div class="title">
+                    <h2>
+                        <b>03</b>
+                        <a href="#home">부동산</a>
+                    </h2>
+                    <p>선택한 상권의 부동산 매물</p>
+                </div>
+                <div class="item_area">
+                    <ul id="item_list">
 
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
-            </div>
+            </section>
         </div>
     </body>
     <script src="../static/js/extra.js"></script>
