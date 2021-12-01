@@ -43,7 +43,7 @@
                 <select id="upjong">
                     <option value="" selected>업종</option>
                 </select>
-                <button class="btn_search">검색</button>
+                <button id="btn_search" class="btn_search">검색</button>
                 <div class="area_list">
                     <ul id="detail_commercial_area">
 
@@ -98,6 +98,29 @@
                         <a href="#home">부동산</a>
                     </h2>
                     <p>선택한 상권의 부동산 매물</p>
+                </div>
+                <div class="item_search">
+                    <label>거래 방식: </label>
+                    <select id="dealing_way">
+                        <option value="total" selected>전체</option>
+                        <option value="monthly">월세</option>
+                        <option value="lease">전세</option>
+                        <option value="dealing">매매</option>
+                        <option value="short_rental">단기 임대</option>
+                    </select>
+                    <label>가격대: </label>
+                    <select id="price">
+                        <option value="total" selected>전체</option>
+                        <option value="one">1억 이하</option>
+                        <option value="two">1억</option>
+                        <option value="three">2억</option>
+                        <option value="four">3억</option>
+                        <option value="five">4억</option>
+                        <option value="six">5억 이상</option>
+                    </select>
+                    <label>주차 가능: </label>
+                    <input type="checkbox" id="parking">
+                    <button id="btn_estate" class="btn_search">검색</button>
                 </div>
                 <div class="item_area">
                     <ul id="item_list">

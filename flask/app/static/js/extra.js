@@ -3,7 +3,7 @@ $(function() {
     $("#franchise_chart").css("display", "none");
     $("#arbeit").css("height", "150px");
     $("#franchise").css("height", "150px");
-    $("#real_estate").css("height", "150px");
+    $("#real_estate").css("height", "270px");
 
     $("#commercial_area").keyup(function() {
         if($("#commercial_area").val() != "")
@@ -21,7 +21,7 @@ $(function() {
         upjong_list($(this).text());
     });
     
-    $(".btn_search").click(function() {
+    $("#btn_search").click(function() {
         if($("#commercial_area").val() == "") {
             alert("상권명을 입력하세요.");
     
@@ -40,10 +40,20 @@ $(function() {
         // 데이터 가져오기
         get_extra_datas($commercial_area, $upjong);
     });
+
+    $("#btn_estate").click(function() {
+        if($("#commercial_area").val() == "") {
+            alert("상권명을 입력하세요.");
+    
+            $("#commercial_area").focus();
+        }
+
+        get_real_estate();
+    });
 });
 
 function draw_day(data) {
-    let canvas_day = $("#canvas_day")
+    let canvas_day = $("#canvas_day");
     let day_chart = new Chart(canvas_day, {
         type: "pie",
         data: {
@@ -87,12 +97,12 @@ function draw_day(data) {
                 }
             }
         }
-    })
+    });
 }
 
 
 function draw_time(data) {
-    let canvas_time = $("#canvas_time")
+    let canvas_time = $("#canvas_time");
     let time_chart = new Chart(canvas_time, {
         type: "pie",
         data: {
@@ -132,13 +142,13 @@ function draw_time(data) {
                 }
             }
         }
-    })
+    });
 }
 
 
 // 안정성
 function draw_stability(data) {
-    let canvas_stability = $("#canvas_stability")
+    let canvas_stability = $("#canvas_stability");
     let stability_chart = new Chart(canvas_stability, {
         type: "pie",
         data: {
@@ -166,13 +176,13 @@ function draw_stability(data) {
                 }
             }
         }
-    })
+    });
 }
 
 
 // 수익성
 function draw_profitability(data) {
-    let canvas_profitability = $("#canvas_profitability")
+    let canvas_profitability = $("#canvas_profitability");
     let profitability_chart = new Chart(canvas_profitability, {
         type: "pie",
         data: {
@@ -200,7 +210,7 @@ function draw_profitability(data) {
                 }
             }
         }
-    })
+    });
 }
 
 
@@ -237,7 +247,7 @@ function detail_area_list() {
                 $target.animate({scrollTo: $target.prop("scrollHeight")}, 500);
             }
         }
-    })
+    });
 }
 
 
@@ -257,7 +267,7 @@ function upjong_list() {
 
             $("#upjong option:eq(0)").prop("selected", true);
         }
-    })
+    });
 }
 
 function get_extra_datas($commercial_area, $upjong) {
@@ -327,7 +337,6 @@ function get_extra_datas($commercial_area, $upjong) {
             $("#arbeit_chart").css("display", "block");
             $("#franchise_chart").css("display", "block");
             $("#arbeit").css("height", "600px");
-            $("#real_estate").css("height", "550px");
 
             $("#arbeit .p_result").remove();
             $("#arbeit").append(temp_str);
@@ -335,14 +344,31 @@ function get_extra_datas($commercial_area, $upjong) {
             $("#franchise .p_result").remove();
 
             if(Array.isArray(result[3])) {
-                $("#franchise").css("height", "550px");
+                $("#franchise").css("height", "770px");
+                $("#franchise").append("<p style='text-align:center;font-size:13px;>단위: 천원</p>");
 
                 franchise_str = "<p class='p_result'>";
                 franchise_str += result[0]["상권_코드_명"]+" 상권에서 매출 증감률이 <b>";
                 franchise_str += result[2]["전년도비_매출_증감률"]+"%</b>로 가장 높은 <b>";
                 franchise_str += result[2]["서비스_업종_코드_명"]+"</b>의 프랜차이즈 정보</p>";
 
+                console.log(result[3][0]["상호"]);
+                console.log(result[3][1]["상호"]);
+                franchise_str2 = "<p class='p_result'><b>"+result[3][0]["상호"]+"</b> 가맹본부<br>";
+                franchise_str2 += "부채: "+result[3][0]["부채"].toLocaleString()+", ";
+                franchise_str2 += "자본: "+result[3][0]["자본"].toLocaleString()+", ";
+                franchise_str2 += "자산: "+result[3][0]["자산"].toLocaleString()+"<br>";
+                franchise_str2 += "부채비율, 자기자본비율 기준으로 <b>안정성</b>이 가장 높다.</p>";
+
+                franchise_str3 = "<p class='p_result'><b>"+result[3][1]["상호"]+"</b> 가맹본부<br>";
+                franchise_str3 += "당기순이익: "+result[3][1]["당기순이익"].toLocaleString()+", ";
+                franchise_str3 += "매출액: "+result[3][1]["매출액"].toLocaleString()+", ";
+                franchise_str3 += "영업이익: "+result[3][1]["영업이익"].toLocaleString()+'<br>';
+                franchise_str3 += "영업이익률, 자기자본 순이익률 기준으로 <b>수익성</b>이 높다.</p>";
+
                 $("#franchise_chart").before(franchise_str);
+                $("#franchise").append(franchise_str2);
+                $("#franchise").append(franchise_str3);
 
                 draw_stability(result[3][0]);
                 draw_profitability(result[3][1]);
@@ -362,24 +388,83 @@ function get_extra_datas($commercial_area, $upjong) {
             }
 
             // 부동산
-            $("#real_eatate").css("height", "auto");
-            $("#real_estate h4").remove();
-            $("#item_list").before("<h4 style='margin: 20px'>"+result[4][0]["소재지"]+"</h4>");
+            // $("#real_eatate").css("height", "auto");
+            // $("#real_estate h4").remove();
+            // $("#item_list").before("<h4 style='margin: 20px'>"+result[4][0]["소재지"]+"</h4>");
 
-            // $("#item_list").remove();
+            // for(let i=0; i<result[4].length; i++) {
+            //     li_str = "<li><p><span class='li_title'>"+result[4][i]["가격"]+"</span>";
+            //     li_str += "<span class='li_title'>"+result[4][i]["거래방식"]+"</span></p>";
+            //     li_str += "<p><span class='li_content'>계약/전용면적: "+result[4][i]["계약/전용면적"]+"</span>";
+            //     li_str += "<span class='li_content'>해당층/총층: "+result[4][i]["해당층/총층"]+"</span>";
+            //     li_str += "<span class='li_content'>방향: "+result[4][i]["방향"]+"</span></p>";
+            //     li_str += "<p><span class='li_content'>"+result[4][i]["매물특징"]+"</span></p></li>";
 
-            for(let i=0; i<result[4].length; i++) {
-                li_str = "<li><p><span class='li_title'>"+result[4][i]["가격"]+"</span>";
-                li_str += "<span class='li_title'>"+result[4][i]["거래방식"]+"</span></p>";
-                li_str += "<p><span class='li_content'>계약/전용면적: "+result[4][i]["계약/전용면적"]+"</span>";
-                li_str += "<span class='li_content'>해당층/총층: "+result[4][i]["해당층/총층"]+"</span>";
-                li_str += "<span class='li_content'>방향: "+result[4][i]["방향"]+"</span></p>";
-                li_str += "<p><span class='li_content'>"+result[4][i]["매물특징"]+"</span></p></li>";
+            //     $("#item_list").append(li_str);
+            // }
+        }
+    });
+}
 
-                $("#item_list").append(li_str);
+function get_real_estate() {
+    let $dealing_way = $("#dealing_way").val();
+    let $price = $("#price").val();
+    let $parking;
+
+    if($("input:checkbox[id='parking']").is(":checked")) {
+        $parking = "가능";
+    } else {
+        $parking = "불가능";
+    }
+
+    $("#item_list li").remove();
+    $("#real_estate .p_result").remove();
+
+    $.ajax({
+        url: "/extra/real-estate",
+        type: "POST",
+        data: {
+            "name": $("#commercial_area").val(),
+            "way": $dealing_way, 
+            "price": $price, 
+            "parking": $parking
+        },
+        success: function(result) {
+            console.log(result);
+
+            if(result.length > 0) {
+                $("#real_estate").css("height", "700px");
+                $("#item_list").css("display", "block");
+                // $("#item_list").css("height", "650px");
+                $("#item_list").css("height", "auto");
+                $("#item_list").css("max-height", "480px");
+                $("#item_list").css("background-color", "white");
+
+                // $("#real_eatate").css("height", "auto");
+                $("#real_estate h4").remove();
+                $("#item_list").before("<h4 style='margin-top:20px;text-align:center;'>"+result[0]["소재지"]+"</h3>");
+
+                for(let i=0; i<result.length; i++) {
+                    li_str = "<li><p><span class='li_title'>"+result[i]["가격"]+"</span>";
+                    li_str += "<span class='li_title'>"+result[i]["거래방식"]+"</span></p>";
+                    li_str += "<p><span class='li_content'>계약/전용 면적: "+result[i]["계약/전용면적"]+"</span>";
+                    li_str += "<span class='li_content'>해당층/총층: "+result[i]["해당층/총층"]+"</span></p>";
+                    li_str += "<p><span class='li_content'>주차 가능 여부: "+result[i]["주차가능여부"]+"</span>";
+                    li_str += "<span class='li_content'>방향: "+result[i]["방향"]+"</span></p>";
+                    li_str += "<p><span class='li_content'>"+result[i]["매물특징"]+"</span></p></li>";
+
+                    $("#item_list").append(li_str);
+                }
+
+                $("#item_list li:nth-child("+result.length+")").css("border-bottom", "none");
+            } else {
+                $("#real_estate").css("height", "270px");
+                $("#item_list").css("display", "none");
+                // $("#item_list").css("background-color", "none");
+                $("#real_estate").append("<p class='p_result'>조건에 해당하는 부동산 데이터가 없습니다.</p>");
             }
         }
-    })
+    });
 }
 
 function modal(x) {
