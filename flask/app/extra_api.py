@@ -45,9 +45,7 @@ def extra_upjong_list():
 def extra_datas():
     name = request.form.get("name")
     upjong = request.form.get("upjong")
-
-    print(name, upjong)
-
+    
     result = []
 
     sales_rate_day = db.get_collection("sales_rate_day")
