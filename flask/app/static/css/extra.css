@@ -25,9 +25,9 @@ header {
     background-color:rgba(17, 17, 17, 0.85) !important;
 }
 
-.header_title h1 {
+header h1 b {
     margin-left: 20px;
-    font-weight: 500;
+	font-size: 34px;
     color: #fff;
 }
 
@@ -68,18 +68,40 @@ header {
     right: 0;
     bottom: 0;
     padding-left: 120px;
-    z-index: 1000;
+    z-index: 999;
     background: rgba(17, 17, 17, 0.85);
+}
+
+header nav {
+    width: calc(100% - 240px);
+    position: absolute;
+    right: 0;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header nav li {
+    list-style-type: none;
+    margin-right: 41px;
+}
+
+header nav li a {
+    color:floralwhite;
 }
 
 .inner_nav { 
     display: inline-block;
+    position: unset;
 }
 
 .main_menu {
    position: relative;
-   margin-top:22px;
-   display:inline-block; 
+   margin-top: 22px;
+   padding: 0;
+   display: inline-block; 
 }
 
 .main_menu > li {
@@ -95,24 +117,6 @@ header {
     margin-bottom: 5px;
     letter-spacing: -0.038em;
     color:#ffffff;
-}
-
-header nav {
-    width: calc(100% - 230px);
-}
-
-header nav ul {
-    display: flex;
-    justify-content: flex-end;
-}
-
-header nav li {
-    list-style-type: none;
-    margin-right: 41px;
-}
-
-header nav li a {
-    color:floralwhite;
 }
 
 section {
@@ -204,6 +208,10 @@ section p {
     background-color: #1a7cff;
     border-radius: 19px;
     display: inline-block;
+}
+
+.title a {
+    color: black;
 }
 
 /* .data_box { */

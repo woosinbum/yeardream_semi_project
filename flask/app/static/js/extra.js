@@ -32,6 +32,8 @@ $(function() {
             alert("업종을 선택하세요.");
         }
 
+        $(".area_list").css("display", "none");
+
         $commercial_area = $("#commercial_area").val();
         $upjong = $("#upjong").val();
     
@@ -318,13 +320,13 @@ function get_extra_datas($commercial_area, $upjong) {
             let max_time_index = times.indexOf(max_time);
 
             temp_str = "<p class='p_result'>";
-            temp_str += result[0]["상권_코드_명"]+" 상권의 "+result[0]["서비스_업종_코드_명"]+" 업종은 ";
+            temp_str += result[0]["상권_코드_명"]+" 상권의 "+result[0]["서비스_업종_코드_명"]+" 업종은<br>";
             temp_str += "평균적으로 <b>"+days_dict[max_day_index]+"</b>과 <b>"+times_dict[max_time_index]+"</b>에 ";
             temp_str += "손님이 가장 많습니다.</p>";
 
             $("#arbeit_chart").css("display", "block");
             $("#franchise_chart").css("display", "block");
-            $("#arbeit").css("height", "550px");
+            $("#arbeit").css("height", "600px");
             $("#real_estate").css("height", "550px");
 
             $("#arbeit .p_result").remove();
