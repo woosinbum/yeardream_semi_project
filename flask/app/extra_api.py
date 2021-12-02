@@ -204,16 +204,28 @@ def extra_real_estates():
 
     if way != "total":
         way = way_dict[way]
-        query5 = {
-            "상권_코드": code,
-            "거래방식": way,
-            "주차가능여부": parking
-        }
+
+        if parking == "total":
+            query5 = {
+                "상권_코드": code,
+                "거래방식": way
+            }
+        else:
+            query5 = {
+                "상권_코드": code,
+                "거래방식": way,
+                "주차가능여부": parking
+            }
     else:
-        query5 = {
-            "상권_코드": code,
-            "주차가능여부": parking
-        }
+        if parking == "total":
+            query5 = {
+                "상권_코드": code
+            }
+        else:
+            query5 = {
+                "상권_코드": code,
+                "주차가능여부": parking
+            }
     projection5 = {"_id": False}
 
     real_estates = list(real_estate.find(query5, projection5))
@@ -232,9 +244,5 @@ def extra_real_estates():
             else:
                 if data["가격"].startswith(price_dict[price]):
                     result.append(data)
-        
-        # result.append(temp)
     
-    pprint(result)
-
     return jsonify(result)

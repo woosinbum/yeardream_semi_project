@@ -12,16 +12,14 @@
 	<body>
 		<div class="wrap">
 			<section id="side_bar"> 
-			<!-- <section id="side_bar_wrap">  -->
-				<!-- <div class='side_bar'> -->
 				<div id="market_header">
 					<button class="btn_side_close">
 						<img src="../static/image/close_icon.png">
 					</button>
 				</div>
 				<div class="side_bar_header">
-					<label for='market_name'>시장검색:</label>
-					<select name="market_name"id="market" onchange="market_code(this.value)">
+					<label for='market_name'>상권 검색: </label>
+					<select name="market_name" id="market" onchange="market_code(this.value)">
 						<option>선택</option>
 						{%for i in market%}
 							<option value="{{i.get('상권_코드')}}">{{i.get('상권_코드_명')}}</option>
@@ -47,12 +45,9 @@
 				<div id="fourth">
 					<canvas id='service_sale'width='400' height="250"></canvas>
 				</div>
-				<!-- </div> -->
 			</section>
 
 			<div class="intro_bg">
-				<!-- <div class="header"> -->
-				<!-- <header id="link_header"> -->
 				<header>
 					<button class="btn_menu" onclick="modal('block')">
 						<img src="../static/image/menu_icon.png">
@@ -68,13 +63,14 @@
 							<img src="../static/image/close_icon.png">
 						</button>
 					</div>
-					<ul class="nav">
-						<!-- <li><a href ='#link_header'>HOME</a></li> -->
-						<li><a href="#link_top_five">REVENUE</a></li>
-						<li><a href="#link_total_amount">CHANGE</a></li>
-						<li><a href="#link_trend_report">TREND</a></li>
-					</ul>
-				<!-- </div> -->
+					<nav class="bar_nav">
+						<ul>
+							<!-- <li><a href ='#link_header'>HOME</a></li> -->
+							<li><a href="#link_top_five">REVENUE</a></li>
+							<li><a href="#link_total_amount">CHANGE</a></li>
+							<li><a href="#link_trend_report">TREND</a></li>
+						</ul>
+					</nav>
 				</header>
 				<div class="intro_title">
 					<h1>서울 상권 트렌드 2021</h1>
@@ -95,7 +91,7 @@
 				</li>
 				<li>
 					<div>
-						<div><b>2021 최고매출 업종</b></div>
+						<div><b>2020 최고매출 업종</b></div>
 						<div>수산물 판매</div>
 					</div>
 				</li>
@@ -122,11 +118,13 @@
 			<div class="top_five" id="link_top_five">
 				<h1>
 					<b>01</b>
-					매출 증감률 상위,하위 업종
+					매출 증감률 상위, 하위 업종
 				</h1>
 				<div class="exp">
-					2021년 서울시 기준 업종별 평균 매출 증감률을 나타냈으며
-					<br>점포수 증감률이 상이함을 참고하세요.
+					<p>
+						2020년 서울시 기준 업종별 월 평균 매출 증감률을 나타냈으며, <br>
+						점포수 증감률이 상이함을 참고하세요.
+					</p>
 				</div>
 				<div class="report_rank">
 					<div class="rank_box">
@@ -139,7 +137,7 @@
 							</div>
 							<dl class="first">
 								<dt class="c_1">1</dt>
-								<dd class="c_2">{{sales_top[0]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_2_first">{{sales_top[0]['서비스_업종_코드_명']}}</dd>
 								<dd class="c_3">{{sales_top[0]['전년도비_매출_증감률']}}%</dd>	
 							</dl>
 							<dl>
@@ -166,7 +164,6 @@
 								<dd class="c_3">{{sales_top[4]['전년도비_매출_증감률']}}%</dd>	
 							</dl>
 						</section>
-
 					</div>
 					<div class="rank_box">
 						<h3>매출 증감률 하위 업종</h3>
@@ -178,7 +175,7 @@
 							</div>
 							<dl class="first">
 								<dt class="c_1">1</dt>
-								<dd class="c_2">{{sales_low[0]['서비스_업종_코드_명']}}</dd>
+								<dd class="c_2_first">{{sales_low[0]['서비스_업종_코드_명']}}</dd>
 								<dd class="c_3">{{sales_low[0]['전년도비_매출_증감률']}}%</dd>	
 							</dl>
 							<dl>
@@ -205,9 +202,7 @@
 								<dd class="c_3">{{sales_low[4]['전년도비_매출_증감률']}}%</dd>	
 							</dl>
 						</section>
-						
 					</div>
-				
 				</div>
 				<!-- second page -->
 			</div>
@@ -218,8 +213,10 @@
 				</h1>
 				<div class="exp">
 					<h3>연 평균 매출액 유지, 점포수 급감</h3>
-					점포수 는 급감하는 반면 연 매출액은 유지되는 것으로 보아
-					<br>상위 업종이 매출의 큰 비중을 가지고 있다고 생각됩니다.
+					<p>
+						점포수는 급감하는 반면 연 매출액은 유지되는 것으로 보아<br>
+						상위 업종이 매출의 큰 비중을 가지고 있다고 생각됩니다.
+					</p>
 				</div>
 				<div class="report_rank">
 					<div class="rank_box">
@@ -330,8 +327,10 @@
 				</h1>
 				<div class="exp">
 					<h3>서울시 상위 업종 10가지</h3>
-					기타업종엔 53가지의 업종이 포함되어 있으며
-					<br>책갈피를 클릭하면 상권별 업종 세부 정보를 알아볼 수 있습니다.
+					<p>
+						기타 업종에는 53가지의 업종이 포함되어 있으며<br>
+						책갈피를 클릭하면 상권별 업종 세부 정보를 알아볼 수 있습니다.
+					</p>
 				</div>
 				<div class="report_rank">
 					

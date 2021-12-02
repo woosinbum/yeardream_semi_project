@@ -3,7 +3,6 @@ from app.main_api import main
 from app.factor_analysis import factor
 from app.extra_api import extra
 
-
 app = Flask(__name__)
 
 app.register_blueprint(main)
