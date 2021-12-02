@@ -50,6 +50,16 @@ $(function() {
 
         get_real_estate();
     });
+
+    $("#parking").change(function() {
+        // if(!$("#item_list").is(":empty")) {
+        console.log($("#item_list").length);
+
+        if($("#item_list").length != 0) {
+        // if($("#item_list > li").size() != "0") {
+            get_real_estate();
+        }
+    });
 });
 
 function draw_day(data) {
@@ -400,7 +410,7 @@ function get_real_estate() {
     if($("input:checkbox[id='parking']").is(":checked")) {
         $parking = "가능";
     } else {
-        $parking = "불가능";
+        $parking = "total";
     }
 
     $("#item_list li").remove();
