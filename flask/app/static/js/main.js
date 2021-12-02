@@ -6,7 +6,11 @@ $(function() {
     $(".btn_side_close").click(function() {
         $("#side_bar").css("display", "none");
     });
+
+    // $("#market").change()
 });
+
+var result;
 
 function modal(x) {
     $("#modal_on").css("display", x);
@@ -61,8 +65,6 @@ function make_pie(input) {
         }
     })
 }
-
-var result;
 
 function make_age(input) {
     // var age = document.getElementById('age_ratio').getContext('2d');
