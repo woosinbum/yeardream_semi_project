@@ -1,3 +1,3 @@
-function modal(x){
-    document.getElementById("modal_on").style.display=x;
+function modal(x) {
+    $("#modal_on").css("display", x)
 }

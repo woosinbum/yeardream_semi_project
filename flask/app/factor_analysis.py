@@ -54,7 +54,7 @@ income_lab=[]
 income_cor=[]
 make_label_data(income_data,income_lab,income_cor,income_col)
 
-@factor.route("/factor",methods=['GET'])
+@factor.route("/factor", methods=["GET"])
 def factor_page():
 
     return render_template("factor_analysis.html", 
@@ -62,11 +62,7 @@ def factor_page():
                             fac_data=fac_data,
                             foot_data=foot_data, 
                             income_data=income_data)
-    
 
-
-@factor.route("/factor/map", methods=['GET'])
+@factor.route("/factor/map", methods=["GET"])
 def map_page():
-    return render_template("factor-analysis2.html")
-
-
+    return render_template("seoul_map.html")

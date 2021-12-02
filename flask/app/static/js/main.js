@@ -75,12 +75,12 @@ function make_age(input) {
                 label: 'gender_ratio',
                 data: input,
                 backgroundColor: [
-                    '#73563D',
-                    '#038C73',
-                    '#04BF9D',
-                    '#04D9D9',
-                    '#D5E5F2',
-                    '#F26A1B'
+                    "#b3cde0",
+                    "#4a7da7",
+                    "#6497b1",
+                    "#215b7a",
+                    "#03396c",
+                    "#011f4b"
                 ],
                 borderWidth: 1,
                 borderColor: '#f0f0f0',
@@ -126,13 +126,7 @@ function make_bar(input) {
             datasets:[{
                 data: input,
                 backgroundColor:[
-                    '#f3722c',
-                    '#f8961e',
-                    '#f9c74f',
-                    '#90be6d',
-                    '#43aa8b',
-                    '#577590', 
-                    '#f94144'
+                    "#6497b1"
                 ],
                 borderWidth: 1,
                 borderColor: '#f0f0f0',
@@ -180,6 +174,9 @@ function make_service(input) {
     let datas = []
 
     for(let i=0; i<input.length; i++) {
+        if(input[i]["기준_년_코드"] == "2021")
+            break;
+            
         years.push(input[i]["기준_년_코드"]);
         datas.push(input[i]["년_매출_합"]);
     }
@@ -196,12 +193,7 @@ function make_service(input) {
             datasets:[{
                 data: datas,
                 backgroundColor:[
-                    '#f3722c',
-                    '#f8961e',
-                    '#f9c74f',
-                    '#90be6d',
-                    '#43aa8b',
-                    '#577590'
+                    "#6497b1"
                 ],
                 borderWidth: 1,
                 borderColor: '#f0f0f0',
@@ -224,8 +216,8 @@ function make_service(input) {
             },
             plugins: {
                 title: {
-                    display:true,
-                    text:"연 매출 비중 (단위:원)",
+                    display: true,
+                    text:"연 매출 합 (단위:원)",
                     fontSize:10
                 },
                 legend :{

@@ -34,13 +34,14 @@ header h1 b {
 
 .btn_menu {
     margin-left: 5px;
-    min-width:61px;
-    width:40px;
+    min-width: 61px;
+    width: 40px;
     height: 61px;
     z-index: 999;
     border: 0;
     outline: 0;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .btn_menu img, .btn_close img {
@@ -59,6 +60,7 @@ header h1 b {
     border: 0;
     outline: 0;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .modal {
