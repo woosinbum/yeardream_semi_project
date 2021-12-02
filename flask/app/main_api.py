@@ -53,7 +53,7 @@ def main_page():
     sales_top5 = list(sales_info.find({'기준_년_코드':2020},projection).sort('전년도비_매출_증감률',-1).limit(5))
     sales_low5 = list(sales_info.find({'기준_년_코드':2020},projection).sort('전년도비_매출_증감률',1).limit(5))
 
-    market_lab = list(market_col.find({},projection))
+    market_lab = list(market_col.find({},projection).sort("상권_코드_명",1))
     
     
     trend_data=[]
@@ -81,7 +81,7 @@ def main_page():
 
 @main.route("/market-name",methods=['POST'])
 def market_name():
-    service_code = request.form.get("market")
+    service_code = request.form.get("code")
     print(service_code)
     
     return service_code
@@ -89,28 +89,28 @@ def market_name():
 
 @main.route("/market-name/list", methods=['POST'])
 def factor_bring_data():
-    service = request.form.get("service")
-    market = request.form.get("market")
-    query = {"상권_코드": int(market)}       
-    query2 = {"서비스_업종_코드":service}
+    value = request.form.get("code")
+    query = {"상권_코드": int(value)}       
+    
     projection = {'_id':False}
     
-    gender_data= list(gender_rate.find(query,projection))
+    gender_data= list(gender_rate.find(query,projection).sort('서비스_업종_코드_명',1))
     age_data = list(age_rate.find(query,projection))
     
     day_data = list(day_rate.find(query,projection))
-    service_data = list(service_col.find(query,query2,projection))
     
-    data = [gender_data,age_data,day_data,service_data]
+    
+    data = [gender_data,age_data,day_data]
 
-    # data.append(gender_data)
-    # data.append(age_data)
-    # data.append(store)
-
-    # print(gender_data)
-    # print(age_data)
-    # print(st)
-    # print(data)
 
     return jsonify(data)
 
+@main.route("/market-name/list/service", methods=['POST'])
+def service_list():
+    market_code = request.form.get("market_code")
+    service_code = request.form.get("service_code")
+
+    projection={'_id':False}
+    service_data = list(service_col.find({'상권_코드': market_code, '서비스_업종_코드': service_code}, projection).sort("기준_년_코드", 1))
+    
+    return jsonify(service_data)
