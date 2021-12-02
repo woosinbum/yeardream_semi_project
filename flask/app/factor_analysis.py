@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 factor = Blueprint('factor',__name__)
 
-connection = MongoClient("mongodb+srv://user1:uZGuuMyRngM3izgG@cluster0.cu0c3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+connection = MongoClient("mongodb+srv://user1:uZGuuMyRngM3izgG@cluster0.cu0c3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", connect=False)
 db = connection.get_database('elice')
 job_col=db.get_collection('corr_sales_job_pop')
 fac_col=db.get_collection('corr_sales_facility')

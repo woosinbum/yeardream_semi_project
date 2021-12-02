@@ -4,7 +4,7 @@ from pprint import pprint
 
 extra = Blueprint("extra", __name__)
 
-connection = MongoClient("mongodb+srv://user1:uZGuuMyRngM3izgG@cluster0.cu0c3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+connection = MongoClient("mongodb+srv://user1:uZGuuMyRngM3izgG@cluster0.cu0c3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", connect=False)
 db = connection.get_database("elice")
 
 @extra.route("/extra")
