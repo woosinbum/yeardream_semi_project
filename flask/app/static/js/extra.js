@@ -78,13 +78,13 @@ function draw_day(data) {
                 ], 
                 
                 backgroundColor: [
-                    '#f3722c',
-                    '#f8961e',
-                    '#f9c74f',
-                    '#90be6d',
-                    '#43aa8b',
-                    '#577590', 
-                    '#f94144'
+                    "#b3cde0",
+                    "#4a7da7",
+                    "#6497b1",
+                    "#215b7a",
+                    "#10496E",
+                    "#03396c",
+                    "#011f4b"
                 ], 
                 borderWidth: 0
             }]
@@ -124,12 +124,12 @@ function draw_time(data) {
                     data["시간대_21~24_매출_비율"]
                 ],
                 backgroundColor: [
-                    '#f3722c',
-                    '#f9c74f',
-                    '#90be6d',
-                    '#43aa8b',
-                    '#577590', 
-                    '#f94144'
+                    "#b3cde0",
+                    "#4a7da7",
+                    "#6497b1",
+                    "#215b7a",
+                    "#03396c",
+                    "#011f4b"
                 ], 
                 borderWidth: 0
             }]
@@ -162,8 +162,8 @@ function draw_stability(data) {
                 ], 
                 
                 backgroundColor: [
-                    '#f9c74f',
-                    '#577590'
+                    "#b3cde0",
+                    "#03396c"
                 ], 
                 borderWidth: 0
             }]
@@ -196,8 +196,8 @@ function draw_profitability(data) {
                 ], 
                 
                 backgroundColor: [
-                    '#f9c74f',
-                    '#577590'
+                    "#b3cde0",
+                    "#03396c"
                 ], 
                 borderWidth: 0
             }]
@@ -246,6 +246,8 @@ function detail_area_list() {
                 $target.append("<li value='"+key+"' class='add_li'>"+val+"</li>");
                 $target.animate({scrollTo: $target.prop("scrollHeight")}, 500);
             }
+
+            $(".add_li:nth-child("+result.length+")").css("border-bottom", "none");
         }
     });
 }
@@ -426,7 +428,7 @@ function get_real_estate() {
 
                 // $("#real_eatate").css("height", "auto");
                 $("#real_estate h4").remove();
-                $("#item_list").before("<h4 style='margin-top:20px;text-align:center;'>"+result[0]["소재지"]+"</h3>");
+                $("#item_list").before("<h4 style='margin-top:40px;text-align:center;'>"+result[0]["소재지"]+"</h3>");
 
                 for(let i=0; i<result.length; i++) {
                     li_str = "<li><p><span class='li_title'>"+result[i]["가격"]+"</span>";

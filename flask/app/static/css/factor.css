@@ -163,6 +163,10 @@
     justify-content: center;
 	background:#f0f0f0;
 }
+.p > p{
+    text-align: center;
+
+}
 
 .graph_box {
 	width: 600px;

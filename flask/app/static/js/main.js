@@ -176,22 +176,32 @@ function make_bar(input) {
 }
 //fourth
 function make_service(input) {
+    let years = []
+    let datas = []
+
+    for(let i=0; i<input.length; i++) {
+        years.push(input[i]["기준_년_코드"]);
+        datas.push(input[i]["년_매출_합"]);
+    }
+
+    console.log(years);
+    console.log(datas);
+
     // var sales = document.getElementById('day_ratio').getContext('2d');
     let service = $("#service_sale");
     let serviceChart = new Chart(service, {
         type: 'bar',
         data: {
-            labels: ['월','화','수','목','금','토','일'], 
+            labels: years, 
             datasets:[{
-                data: input,
+                data: datas,
                 backgroundColor:[
                     '#f3722c',
                     '#f8961e',
                     '#f9c74f',
                     '#90be6d',
                     '#43aa8b',
-                    '#577590', 
-                    '#f94144'
+                    '#577590'
                 ],
                 borderWidth: 1,
                 borderColor: '#f0f0f0',
@@ -215,7 +225,7 @@ function make_service(input) {
             plugins: {
                 title: {
                     display:true,
-                    text:"일별 매출 비중 (단위:%)",
+                    text:"연 매출 비중 (단위:원)",
                     fontSize:10
                 },
                 legend :{
@@ -299,13 +309,18 @@ function get_service_list(value) {
         result[2][value]['토요일_매출_비율'],
         result[2][value]['일요일_매출_비율']
     ]);
-    make_service([
-        result[2][value]['월요일_매출_비율'],
-        result[2][value]['화요일_매출_비율'],
-        result[2][value]['수요일_매출_비율'],
-        result[2][value]['목요일_매출_비율'],
-        result[2][value]['금요일_매출_비율'],
-        result[2][value]['토요일_매출_비율'],
-        result[2][value]['일요일_매출_비율']
-    ]);
+
+    $.ajax({
+        type:'POST',
+        url:'/market-name/list/service',
+        data:{
+            "market_code":result[1][value]['상권_코드'],
+            "service_code":result[1][value]['서비스_업종_코드']
+        },
+        success: function(res){
+            console.log(res);
+
+            make_service(res);
+        }
+    })
 }
