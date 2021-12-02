@@ -13,7 +13,7 @@ income_col = db.get_collection('corr_sales_income')
 
 def make_label_data(list_data,cat,corr,col):
     projection={'_id':False}
-    col_list=list(col.find({},projection).sort('category',1))
+    col_list=list(col.find({},projection).sort([('correlation',-1),('category',-1)]))[:6]
     for i in col_list:
         cat.append(i.get('category'))
     for i in col_list:
@@ -31,7 +31,7 @@ new_dict={'남성연령대_10_직장_인구_수':'10대 직장인'}
 
 # 집객 시설 상관관계 데이터
 #nan값이 들어있어 수동으로 함
-facility=list(fac_col.find({},{'_id':False}).sort('correlation',1))
+facility=list(fac_col.find({},{'_id':False}).sort([('correlation',-1),('category',-1)]))[:6]
 fac_label=[]
 fac_cor=[]
 
@@ -41,9 +41,6 @@ for i in facility:
     fac_cor.append(round(i.get('correlation'),2))
 
 
-fac_cor[0] = 0
-fac_cor[1] = 0
-fac_cor[2] = 0
 fac_data=[fac_label,fac_cor]
 
 #유동인구 상관관계 데이터

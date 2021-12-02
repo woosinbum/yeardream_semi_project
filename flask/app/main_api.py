@@ -15,6 +15,7 @@ day_rate = db.get_collection('sales_rate_day')
 market_col = db.get_collection('commercial_area')
 average_sale_ratio = db.get_collection('sales_info_sales')
 business_ratio = db.get_collection('sales_info_business_ratio_2021')
+service_col = db.get_collection('sales_info_detail')
 #트렌드데이터 생성함수
 def make_label_data(list_data,col):
     lab=[]
@@ -52,7 +53,7 @@ def main_page():
     sales_top5 = list(sales_info.find({'기준_년_코드':2020},projection).sort('전년도비_매출_증감률',-1).limit(5))
     sales_low5 = list(sales_info.find({'기준_년_코드':2020},projection).sort('전년도비_매출_증감률',1).limit(5))
 
-    market_lab = list(market_col.find({},projection))
+    market_lab = list(market_col.find({},projection).sort("상권_코드_명",1))
     
     
     trend_data=[]
@@ -64,7 +65,7 @@ def main_page():
     store_data[0].pop(0)
     store_data[1].pop(0)
     revenue_data=[]
-    make_data(revenue_data,'기준_년_코드','연매출평균증감',average_sale_ratio)
+    make_data(revenue_data,'기준_년_코드','연매출평균',average_sale_ratio)
     revenue_data[0].pop(0)
     revenue_data[1].pop(0)
 
@@ -89,11 +90,11 @@ def market_name():
 @main.route("/market-name/list", methods=['POST'])
 def factor_bring_data():
     value = request.form.get("code")
-
-    query = {"상권_코드": int(value)}        
+    query = {"상권_코드": int(value)}       
+    
     projection = {'_id':False}
     
-    gender_data= list(gender_rate.find(query,projection))
+    gender_data= list(gender_rate.find(query,projection).sort('서비스_업종_코드_명',1))
     age_data = list(age_rate.find(query,projection))
     
     day_data = list(day_rate.find(query,projection))
@@ -101,14 +102,15 @@ def factor_bring_data():
     
     data = [gender_data,age_data,day_data]
 
-    # data.append(gender_data)
-    # data.append(age_data)
-    # data.append(store)
-
-    # print(gender_data)
-    # print(age_data)
-    # print(st)
-    # print(data)
 
     return jsonify(data)
 
+@main.route("/market-name/list/service", methods=['POST'])
+def service_list():
+    market_code = request.form.get("market_code")
+    service_code = request.form.get("service_code")
+
+    projection={'_id':False}
+    service_data = list(service_col.find({'상권_코드': market_code, '서비스_업종_코드': service_code}, projection).sort("기준_년_코드", 1))
+    
+    return jsonify(service_data)

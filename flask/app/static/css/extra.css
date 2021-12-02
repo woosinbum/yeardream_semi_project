@@ -20,20 +20,61 @@ a {
 header {
     display: flex;
     width: 100%;
+    min-width: 600px;
     height: 86px;
     align-items: center;
     background-color:rgba(17, 17, 17, 0.85) !important;
 }
 
-.btn_main {
-    cursor: pointer;
-    width: 40px;
-    margin-left: 15px;
+header h1 b {
+    margin-left: 20px;
+	font-size: 34px;
+    color: #fff;
+}
+
+.btn_menu {
+    margin-left: 5px;
+    min-width:61px;
+    width:40px;
+    height: 61px;
+    z-index: 999;
+    border: 0;
+    outline: 0;
     background-color: transparent;
 }
 
+.btn_menu img, .btn_close img {
+    width: 40px;
+    height: 40px;
+}
+
+.btn_close {
+    position: fixed;
+    left: 8px;
+    top: 15px;
+    min-width: 59px;
+    width: 55px;
+    height: 55px;
+    z-index: 999;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding-left: 120px;
+    z-index: 999;
+    background: rgba(17, 17, 17, 0.85);
+}
+
 header nav {
-    width: calc(100% - 40px);
+    width: calc(100% - 240px);
 }
 
 header nav ul {
@@ -50,30 +91,51 @@ header nav li a {
     color:floralwhite;
 }
 
+.inner_nav { 
+    display: inline-block;
+    position: unset;
+}
+
+.main_menu {
+   position: relative;
+   margin-top: 22px;
+   padding: 0;
+   display: inline-block; 
+}
+
+.main_menu > li {
+    display: flex;
+}
+
+.main_menu > li > a {
+    display: inline-block;
+    line-height: 64px;
+    font-size: 40px;
+    font-weight: 400;
+    font-family: "BM Hanna", sans-serif;
+    margin-bottom: 5px;
+    letter-spacing: -0.038em;
+    color:#ffffff;
+}
+
 section {
     width: 700px;
     height: auto;
-    margin: 50px auto 0;
+    margin: 0 auto 50px;
 }
 
 section#search {
     width: 500px;
     height: 100px;
     text-align: center;
+    margin-top: 50px;
 }
-
-/* .search_box {
-    width: 500px;
-    height: 250px;
-    margin: 30px auto;
-    text-align: center;
-} */
 
 #detail_commercial_area {
     position: relative;
-    width: 200px;
+    width: 190px;
     padding: 20px;
-    margin-left: 10px;
+    margin-left: 15px;
     list-style-type: none;
     background-color: white;
     overflow: auto;
@@ -85,18 +147,21 @@ section#search {
 .add_li {
     background-color: white;
     line-height: 35px;
+    font-size: 15px;
 }
 
 #commercial_area {
     background-color: white;
     border: 1px solid;
+    width: 135px;
     height: 35px;
     padding: .3em .5em;
     margin-right: 10px;
 }
 
 /* select */
-#upjong {
+/* #upjong { */
+select {
     background-color: white;
     width: 120px;
     height: 35px;
@@ -130,13 +195,29 @@ section h2 {
 section p {
     font-size: 15px;
     line-height: 24px;
-    color: #555555ce;
+    color: hsla(0, 0%, 33%, 0.808);
+}
+
+.title > h2 > b {
+    height: 38px;
+    margin-right: 10px;
+    padding: 0 15px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 38px;
+    background-color: #1a7cff;
+    border-radius: 19px;
+    display: inline-block;
+}
+
+.title a {
+    color: black;
 }
 
 /* .data_box { */
 #arbeit, #franchise, #real_estate {
     width: 700px;
-    /* height: 500px; */
 }
 
 #arbeit_chart, #franchise_chart {
@@ -157,12 +238,26 @@ section p {
     /* background-color: white; */
 }
 
+.item_search {
+    width: 700px;
+    text-align: center;
+}
+
+.item_search select {
+    margin-right: 10px;
+}
+
 #item_list {
+    width: 500px;
+    margin: 20px auto;
     list-style-type: none;
+    overflow: auto;
+    padding: 0;
 }
 
 #item_list li {
-    margin: 20px 0;
+    padding: 20px 0 20px 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.185);
 }
 
 #item_list li p {
@@ -178,7 +273,7 @@ section p {
 
 .li_content {
     margin-top: 5px;
-    margin-right: 5px; 
+    margin-right: 10px; 
 }
 
 .p_result {

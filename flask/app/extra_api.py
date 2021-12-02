@@ -1,5 +1,6 @@
-from flask import Blueprint, json, request, render_template, jsonify
+from flask import Blueprint, request, render_template, jsonify
 from pymongo import MongoClient
+from pprint import pprint
 
 extra = Blueprint("extra", __name__)
 
@@ -45,7 +46,7 @@ def extra_upjong_list():
 def extra_datas():
     name = request.form.get("name")
     upjong = request.form.get("upjong")
-    
+
     result = []
 
     sales_rate_day = db.get_collection("sales_rate_day")
@@ -67,8 +68,6 @@ def extra_datas():
     projection2 = {"_id": False, "상권_코드": True}
 
     code = commercial_area.find_one(query2, projection2)["상권_코드"]
-
-
 
     # 프랜차이즈
     # 매출이 가장 높은 업종
@@ -146,10 +145,6 @@ def extra_datas():
         result.append(upjong_code)
 
     if isinstance(result[-1], dict):
-        # query4 = {"비교 항목": "브랜드별", "세부 비교 항목": "수익성", "업종 소분류": upjong_code}
-        # temp = franchise.find(query4).limit(5)
-        
-        # conditions = ["가맹본부별", "브랜드별"]
         condition = "가맹본부별"
         sub_conditions = ["안정성", "수익성"]
 
@@ -169,13 +164,77 @@ def extra_datas():
         
         result.append(temp)
 
+    return jsonify(result)
+
+
+@extra.route("/extra/real-estate", methods=["POST"])
+def extra_real_estates():
+    name = request.form.get("name")
+    way = request.form.get("way")
+    price = request.form.get("price")
+    parking = request.form.get("parking")
+
+    price_dict = {
+        "two": "1억",
+        "three": "2억",
+        "four": "3억",
+        "five": "4억"
+    }
+
+    way_dict = {
+        "monthly": "월세",
+        "lease": "전세",
+        "dealing": "매매",
+        "short_rental": "단기임대"
+    }
+
+    result = []
+    temp = []
+
+    # 상권코드명으로 상권코드 가져오기
+    commercial_area = db.get_collection("commercial_area")
+    
+    query2 = {"상권_코드_명": name}
+    projection2 = {"_id": False, "상권_코드": True}
+
+    code = commercial_area.find_one(query2, projection2)["상권_코드"]
+
     # 부동산
     real_estate = db.get_collection("real_estate")
 
-    query5 = {"상권_코드": code}
+    if way != "total":
+        way = way_dict[way]
+        query5 = {
+            "상권_코드": code,
+            "거래방식": way,
+            "주차가능여부": parking
+        }
+    else:
+        query5 = {
+            "상권_코드": code,
+            "주차가능여부": parking
+        }
     projection5 = {"_id": False}
 
     real_estates = list(real_estate.find(query5, projection5))
-    result.append(real_estates)
+    
+    if price == "total":
+        result = real_estates
+    else:
+        for data in real_estates:
+            if price == "one":
+                if "억" not in data["가격"]:
+                    result.append(data)
+            elif price == "six":
+                if "억" in data["가격"]:
+                    if data["가격"].split("억")[0] not in ["1", "2", "3", "4"]:
+                        result.append(data)
+            else:
+                if data["가격"].startswith(price_dict[price]):
+                    result.append(data)
+        
+        # result.append(temp)
+    
+    pprint(result)
 
     return jsonify(result)
